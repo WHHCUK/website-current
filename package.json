@@ -8,11 +8,12 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "migrate": "./scripts/run-migrations.sh",
+    "migrate:new": "./scripts/create-migration.sh"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -27,5 +28,10 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0"
+  },
+  "devDependencies": {
+    "contentful-migration": "^4.1.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
   }
 }
