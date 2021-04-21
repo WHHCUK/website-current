@@ -20,27 +20,30 @@ fi
 
 MIGRATIONS_DIR=migrations/*
 
-MIGRATIONS_sRUN=0
+MIGRATIONS_RUN=0
 MIGRATIONS_SKIPPED=0
 
-for MIGRATION_FILE in "$MIGRATIONS_DIR"
+for MIGRATIONS_FILE_PATH in $MIGRATIONS_DIR
 do
-  if [grep -q $MIGRATION_FILE $LOCK_FILE]
+  MIGRATIONS_FILE_NAME=$(basename "$MIGRATIONS_FILE_PATH")
+  
+  if grep -q $MIGRATIONS_FILE_NAME $LOCK_FILE;
     then
-      echo -e "${TXT_YELLOW}Skipping migration:${TXT_RESET} $MIGRATION_FILE"
+      echo -e "${TXT_YELLOW}Skipping migration:${TXT_RESET} $MIGRATIONS_FILE_NAME"
       ((MIGRATIONS_SKIPPED++))
+
     else
-      echo -e "${TXT_BLUE}Running migration:${TXT_RESET} $MIGRATION_FILE \n"
+      echo -e "${TXT_BLUE}Running migration:${TXT_RESET} $MIGRATIONS_FILE_NAME \n"
     
       node_modules/.bin/ts-node node_modules/.bin/contentful-migration \
         -s $CONTENTFUL_SPACE_ID -a $CONTENTFUL_MANAGEMENT_TOKEN -y \
-          $MIGRATION_FILE || exit 1
+          $MIGRATIONS_FILE_PATH || exit 1
       
-      echo $MIGRATION_FILE >> $LOCK_FILE
-      ((MIGRATIONS_RUN++))
+      echo $MIGRATIONS_FILE_NAME >> $LOCK_FILE
       echo -e "\n"
-  fi
 
+      ((MIGRATIONS_RUN++))
+  fi
 done
 
 
