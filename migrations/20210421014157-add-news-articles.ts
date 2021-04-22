@@ -84,8 +84,8 @@ export = function (migration, { makeRequest, spaceId, accessToken }) {
       { size: { min: 500 }},
       { enabledMarks: [ 'bold', 'italic' ]},
       { enabledNodeTypes: [
-          'heading-2',
           'heading-3',
+          'heading-4      ',
           'unordered-list',
           'ordered-list',
           'blockquote',

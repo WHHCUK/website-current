@@ -1,11 +1,12 @@
 import * as React from 'react';
 
+import Page from '../components/Page';
+
 const IndexPage = () => {
   return (
-    <main>
-      <title>404 | WHHC</title>
-      <h1>404</h1>
-    </main>
+    <Page>
+      <title>Page Not Found | WHHC</title>
+    </Page>
   );
 };
 

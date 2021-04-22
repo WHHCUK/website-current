@@ -1,10 +1,12 @@
 import * as React from 'react';
+
+import Page from '../components/Page';
+
 const IndexPage = () => {
   return (
-    <main>
+    <Page currentPath="/">
       <title>Home | WHHC</title>
-      <h1>Homepage</h1>
-    </main>
+    </Page>
   );
 };
 
