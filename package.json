@@ -36,7 +36,7 @@
   "devDependencies": {
     "babel-plugin-macros": "^3.0.1",
     "babel-plugin-styled-components": "^1.12.0",
-    "contentful-migration": "^4.1.1",
+    "contentful-migration": "^4.1.5",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.22",
     "tailwindcss": "^2.1.1",
     "ts-node": "^9.1.1",

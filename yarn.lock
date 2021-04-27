@@ -3777,10 +3777,10 @@ contentful-management@^7.3.1, contentful-management@^7.5.1:
     lodash.isplainobject "^4.0.6"
     type-fest "0.20.2"
 
-contentful-migration@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/contentful-migration/-/contentful-migration-4.1.1.tgz#0d81fcc278f54a3ed5b6d9335f40f67e93efacb2"
-  integrity sha512-TYM/XscYGLcgRjPLoo1fNzyF7VRKpdtVmsiHrP3koS2x0uTIM9JvgpAn2PizsovIzy9M94hmgeUuQO7+G2ZKoA==
+contentful-migration@^4.1.5:
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/contentful-migration/-/contentful-migration-4.1.5.tgz#70ea7b7b50c6fed5c7d64291dc4d05fa7b7435f4"
+  integrity sha512-9WdY3efjjShqNidGWhRPFHrdhZXhfw16XXolYzwFtJaIB9IjQrrJJW6TIxHBh4J3uK3Y/cWxzq4+78ZMaTloZg==
   dependencies:
     axios "^0.21.0"
     bluebird "^3.7.2"
