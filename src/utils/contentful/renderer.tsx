@@ -5,11 +5,13 @@ import {
 import { BLOCKS, Document, INLINES } from '@contentful/rich-text-types';
 import React from 'react';
 
+import BlockQuote from '../../components/BlockQuote';
 import { H1, H2, H3, H4, H5, H6 } from '../../components/Headings';
 import { LI, OL, UL } from '../../components/Lists';
 import Text, { ExternalLink } from '../../components/Text';
 
-import Asset from './asset';
+import Asset from './components/Asset';
+import EmbededEntry from './components/EmbededEntry';
 
 import { RawDocument, isRawDocument } from './types';
 
@@ -30,8 +32,10 @@ const options: Options = {
       <ExternalLink href={node.data.uri}>{children}</ExternalLink>
     ),
     // [BLOCKS.HR]: (_node, children) => <p>BLOCKS.HR</p>,
-    // [BLOCKS.QUOTE]: (_node, children) => <p>BLOCKS.QUOTE</p>,
-    // [BLOCKS.EMBEDDED_ENTRY]: (_node, children) => <p>BLOCKS.EMBEDDED_ENTRY</p>,
+    [BLOCKS.QUOTE]: (_, children) => <BlockQuote>{children}</BlockQuote>,
+    [BLOCKS.EMBEDDED_ENTRY]: (node) => (
+      <EmbededEntry id={node.data.target.sys.id} />
+    ),
     // [INLINES.ENTRY_HYPERLINK]: () => <p>INLINES.ENTRY_HYPERLINK</p>,
     // [INLINES.ASSET_HYPERLINK]: () => <p>INLINES.ASSET_HYPERLINK</p>,
     // [INLINES.EMBEDDED_ENTRY]: () => <p>INLINES.EMBEDDED_ENTRY</p>,

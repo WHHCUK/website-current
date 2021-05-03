@@ -41,3 +41,5 @@ export interface NewsArticle<
   thumbnail: ThumbImageType;
   title: string;
 }
+
+export type CUSTOM_BLOCK = 'youtube';

@@ -1,8 +1,8 @@
 import React from 'react';
-import GatsbyImage, { GatsbyImageFluidProps } from 'gatsby-image';
+import GatsbyImage from 'gatsby-image';
 import tw from 'twin.macro';
 
-import { ReferencesContext } from './context';
+import { ReferencesContext } from '../context';
 
 const StyledImage = tw(GatsbyImage)`mb-12 rounded object-cover mx-auto`;
 

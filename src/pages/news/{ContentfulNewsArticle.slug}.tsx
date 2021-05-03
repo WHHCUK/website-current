@@ -98,23 +98,36 @@ export const query = graphql`
       body {
         raw
         references {
-          contentful_id
-          description
-          file {
-            contentType
-            details {
-              size
-            }
-            fileName
+          ... on ContentfulRichtextYoutube {
+            contentful_id
             url
+            sys {
+              contentType {
+                sys {
+                  id
+                }
+              }
+            }
           }
-          fluid(
-            cropFocus: FACES
-            resizingBehavior: FILL
-            toFormat: WEBP
-            quality: 90
-          ) {
-            ...GatsbyContentfulFluid
+          ... on ContentfulAsset {
+            contentful_id
+            description
+            file {
+              contentType
+              details {
+                size
+              }
+              fileName
+              url
+            }
+            fluid(
+              cropFocus: FACES
+              resizingBehavior: FILL
+              toFormat: WEBP
+              quality: 90
+            ) {
+              ...GatsbyContentfulFluid
+            }
           }
         }
       }

@@ -12,7 +12,7 @@ import { NewsArticle } from '../../utils/contentful';
 import { slugToLabel } from '../../utils/strings';
 
 const Wrap = tw.section`py-20`;
-const Container = tw.div`container mx-auto px-4`;
+const Container = tw.div`container mx-auto px-2 lg:px-4`;
 
 interface Props {
   data: {

@@ -1,6 +1,6 @@
 const path = require('path');
 
-const ARTICLES_PER_PAGE = 9;
+const ARTICLES_PER_PAGE = 12;
 const TEMPLATE_PATH = './src/templates/newsLandingPage/template.tsx';
 
 exports.createPages = async ({ graphql, actions }) => {

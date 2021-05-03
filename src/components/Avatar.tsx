@@ -15,7 +15,7 @@ interface Props {
   member: Member;
 }
 
-const HeroImage: React.FC<Props> = ({ member }) => (
+const Avatar: React.FC<Props> = ({ member }) => (
   <Container>
     <ImageContainer>
       <Image fluid={member.avatar.fluid} />
@@ -36,4 +36,4 @@ const HeroImage: React.FC<Props> = ({ member }) => (
   </Container>
 );
 
-export default HeroImage;
+export default Avatar;
