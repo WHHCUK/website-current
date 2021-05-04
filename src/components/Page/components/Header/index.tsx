@@ -3,10 +3,10 @@ import tw from 'twin.macro';
 
 import useScrollBlock from '../../../../hooks/useScrollBlock';
 
-import Brand from './components/Brand';
-import { MobileMenu, MobileMenuOpenButton } from './components/MobileMenu';
-import { NavButton, NavButtonWrap } from './components/NavButtons';
-import { NavLinks } from './components/NavLinks';
+import Brand from '../components/Brand';
+import { MobileMenu, MobileMenuOpenButton } from '../components/MobileMenu';
+import { NavButton, NavButtonWrap } from '../components/NavButtons';
+import { NavLinks } from '../components/NavLinks';
 
 interface Props {
   currentPath?: string;

@@ -8,7 +8,7 @@ export = function (migration, { makeRequest, spaceId, accessToken }) {
     type: 'Array',
     required: false,
     validations: [
-        { "size": { "min": 3 }},
+        { "size": { "min": 2 }},
     ],
     items: {
         type: 'Link',
@@ -16,8 +16,8 @@ export = function (migration, { makeRequest, spaceId, accessToken }) {
         validations: [
             { linkMimetypeGroup: ["image"]},
             {"assetImageDimensions": {
-                height: {min:500},
-                width: {min:500},
+                height: {min:300},
+                width: {min:400},
             }}
         ]
     }

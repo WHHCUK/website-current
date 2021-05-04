@@ -38,6 +38,7 @@
     "@types/styled-components": "^5.1.9",
     "babel-plugin-macros": "^3.0.1",
     "babel-plugin-styled-components": "^1.12.0",
+    "contentful-management": "^7.17.6",
     "contentful-migration": "^4.1.1",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.22",
     "tailwindcss": "^2.1.1",

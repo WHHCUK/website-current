@@ -1,6 +1,7 @@
 import React from 'react';
 import { GlobalStyles } from 'twin.macro';
 
+import Footer from './components/Footer';
 import Header from './components/Header';
 
 interface Props {
@@ -12,7 +13,7 @@ const Page: React.FC<Props> = ({ children, currentPath }) => (
     <GlobalStyles />
     <Header currentPath={currentPath} />
     <div tw="mt-10 lg:mt-0">{children}</div>
-    <footer>Footer</footer>
+    <Footer />
   </div>
 );
 
