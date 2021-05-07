@@ -1,0 +1,7 @@
+config:
+  aws:profile: whhc
+  aws:region: eu-west-2
+  website:ttl: 900
+  website:certificateArn:
+    secure: AAABAHkWjCXPO1NCrhz6xsK3AulGaXsYyV2ix/o7P9YVS38hWHFNMttE8oSlOwjnT9FqcCR+P4QutdYWUJaKMV5BpSuqqqOYFCgp8zysjuUxD6ouVYYtFwZg9CQxLS2NHuubgFqpOe6OcrLHXnOQv4pYoQ==
+  website:url: whhc.uk

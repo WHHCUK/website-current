@@ -34,6 +34,9 @@
     "styled-components": "^5.2.3"
   },
   "devDependencies": {
+    "@pulumi/aws": "^4.2.0",
+    "@pulumi/pulumi": "^3.2.1",
+    "@types/mime": "^2.0.3",
     "@types/react": "^17.0.4",
     "@types/styled-components": "^5.1.9",
     "babel-plugin-macros": "^3.0.1",
