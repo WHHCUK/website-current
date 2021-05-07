@@ -10,7 +10,7 @@ interface Props {
 
 const EmbededEntry: React.FC<Props> = ({ id }) => {
   const references = React.useContext(ReferencesContext);
-  const entry = references.find((a) => a.contentful_id === id);
+  const entry = references.find((e: any) => e.contentful_id === id);
 
   switch (entry.sys.contentType.sys.id as CUSTOM_BLOCK) {
     case 'youtube':

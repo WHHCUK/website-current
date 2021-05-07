@@ -11,7 +11,7 @@ const Button = tw.button`
 interface Props {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  currentPath: string;
+  currentPath?: string;
   links: [string, string][];
 }
 

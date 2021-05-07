@@ -1,6 +1,6 @@
-import { GatsbyImageFluidProps } from 'gatsby-image';
+import { FluidObject } from 'gatsby-image';
 
-export interface RawDocument<T = GatsbyImageFluidProps> {
+export interface RawDocument<T = FluidImageProps> {
   raw: string;
   references?: {
     contentful_id: string;
@@ -19,23 +19,23 @@ export interface RawDocument<T = GatsbyImageFluidProps> {
 export const isRawDocument = (document: any): document is RawDocument =>
   document.hasOwnProperty('raw');
 
-export interface Member<AvatarImageType = GatsbyImageFluidProps> {
+export interface Member<AvatarImageType = FluidImageProps> {
   name: string;
   role?: string;
   email?: string;
   avatar: AvatarImageType;
 }
 export interface NewsArticle<
-  AuthorImageType = GatsbyImageFluidProps,
-  FeatureImageType = GatsbyImageFluidProps,
-  GalleryImageType = GatsbyImageFluidProps,
-  ThumbImageType = GatsbyImageFluidProps
+  AuthorImageType = FluidImageProps,
+  FeatureImageType = FluidImageProps,
+  GalleryImageType = FluidImageProps,
+  ThumbImageType = FluidImageProps,
 > {
   author: Member<AuthorImageType>;
   body: RawDocument;
   date: string;
   feature: FeatureImageType;
-  gallery: GalleryImageType[];
+  gallery: GalleryImageType[] | undefined;
   slug: string;
   tag: string;
   thumbnail: ThumbImageType;
@@ -43,3 +43,7 @@ export interface NewsArticle<
 }
 
 export type CUSTOM_BLOCK = 'youtube';
+
+export interface FluidImageProps {
+  fluid: FluidObject;
+}

@@ -1,6 +1,8 @@
-import GatsbyImage, { GatsbyImageFluidProps } from 'gatsby-image';
+import GatsbyImage from 'gatsby-image';
 import React from 'react';
 import tw from 'twin.macro';
+
+import { FluidImageProps } from '../utils/contentful';
 
 const GalleryContainer = tw.div`w-full lg:px-24`;
 const RowContainer = tw.div`md:flex md:mb-4 md:ml--4 w-full`;
@@ -8,7 +10,7 @@ const ImageContainer = tw.div`mb-4 md:mb-0 md:ml-4`;
 const Image = tw(GatsbyImage)`rounded`;
 
 interface Props {
-  images: GatsbyImageFluidProps[] | undefined;
+  images: FluidImageProps[];
 }
 
 const Gallery: React.FC<Props> = ({ images }) => {

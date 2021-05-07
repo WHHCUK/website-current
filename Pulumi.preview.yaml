@@ -3,6 +3,6 @@ config:
   aws:region: eu-west-2
   website:certificateArn:
     secure: AAABAOExp1Mz0uOy1lhGtBUU1F1xVK07aIa2tuCaCJ/fKPP5mAo99yG3oWPTXPGehg59IWV5RNfP7yA35RxRQASxTLQzEZ7KGiTAJG+KXlvJT3gejfDDAVanNvsJJcDhSsr6JnJosLdq3o2cqDXkrQJr8A==
-  website:ttl: "60"
+  website:ttl: 0
   website:url:
     secure: AAABALHzm0ZmgAVWwe65uxfYIkBA6hJfY4MJjvO33H2reIxsr8TBxZPbT500hkQTXMFEWg==

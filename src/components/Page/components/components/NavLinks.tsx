@@ -20,7 +20,7 @@ const ActiveNavLink = tw(InactiveNavLink)`
 `;
 
 interface Props {
-  currentPath: string;
+  currentPath?: string;
   links: [string, string][];
 }
 

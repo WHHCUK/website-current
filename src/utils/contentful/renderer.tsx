@@ -23,19 +23,25 @@ const options: Options = {
     [BLOCKS.HEADING_4]: (_, children) => <H4>{children}</H4>,
     [BLOCKS.HEADING_5]: (_, children) => <H5>{children}</H5>,
     [BLOCKS.HEADING_6]: (_, children) => <H6>{children}</H6>,
+
     [BLOCKS.PARAGRAPH]: (_, children) => <Text>{children}</Text>,
+
     [BLOCKS.OL_LIST]: (_, children) => <OL>{children}</OL>,
     [BLOCKS.UL_LIST]: (_, children) => <UL>{children}</UL>,
     [BLOCKS.LIST_ITEM]: (_, children) => <LI>{children}</LI>,
-    [BLOCKS.EMBEDDED_ASSET]: (node) => <Asset id={node.data.target.sys.id} />,
-    [INLINES.HYPERLINK]: (node, children) => (
-      <ExternalLink href={node.data.uri}>{children}</ExternalLink>
-    ),
-    // [BLOCKS.HR]: (_node, children) => <p>BLOCKS.HR</p>,
-    [BLOCKS.QUOTE]: (_, children) => <BlockQuote>{children}</BlockQuote>,
+
     [BLOCKS.EMBEDDED_ENTRY]: (node) => (
       <EmbededEntry id={node.data.target.sys.id} />
     ),
+    [BLOCKS.EMBEDDED_ASSET]: (node) => <Asset id={node.data.target.sys.id} />,
+
+    [INLINES.HYPERLINK]: (node, children) => (
+      <ExternalLink href={node.data.uri}>{children}</ExternalLink>
+    ),
+
+    [BLOCKS.QUOTE]: (_, children) => <BlockQuote>{children}</BlockQuote>,
+
+    // [BLOCKS.HR]: (_node, children) => <p>BLOCKS.HR</p>,
     // [INLINES.ENTRY_HYPERLINK]: () => <p>INLINES.ENTRY_HYPERLINK</p>,
     // [INLINES.ASSET_HYPERLINK]: () => <p>INLINES.ASSET_HYPERLINK</p>,
     // [INLINES.EMBEDDED_ENTRY]: () => <p>INLINES.EMBEDDED_ENTRY</p>,

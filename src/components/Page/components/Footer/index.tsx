@@ -30,36 +30,33 @@ interface FooterQueryData {
   };
 }
 
-interface Props {}
-
-const Footer: React.FC<Props> = () => {
-  const {
-    contentfulSiteSettings: data,
-  } = useStaticQuery<FooterQueryData>(graphql`
-    query Footer {
-      contentfulSiteSettings(name: { eq: "Site Settings" }) {
-        contentful_id
-        slogan {
-          slogan
-        }
-        instagram
-        twitter
-        facebook
-        footerColumn1Header
-        footerColumn1Links {
+const Footer: React.FC = () => {
+  const { contentfulSiteSettings: data } =
+    useStaticQuery<FooterQueryData>(graphql`
+      query Footer {
+        contentfulSiteSettings(name: { eq: "Site Settings" }) {
           contentful_id
-          slug
-          title
-        }
-        footerColumn2Header
-        footerColumn2Links {
-          contentful_id
-          slug
-          title
+          slogan {
+            slogan
+          }
+          instagram
+          twitter
+          facebook
+          footerColumn1Header
+          footerColumn1Links {
+            contentful_id
+            slug
+            title
+          }
+          footerColumn2Header
+          footerColumn2Links {
+            contentful_id
+            slug
+            title
+          }
         }
       }
-    }
-  `);
+    `);
 
   return (
     <StyledFooter>
@@ -67,7 +64,9 @@ const Footer: React.FC<Props> = () => {
         <div tw="flex flex-wrap">
           <div tw="w-full lg:w-1/3 mb-16 lg:mb-0 space-y-4">
             <Brand />
-            <p tw="mb-4 max-w-sm  leading-loose">{data.slogan.slogan}</p>
+            {data.slogan && (
+              <p tw="mb-4 max-w-sm  leading-loose">{data.slogan.slogan}</p>
+            )}
             <div>
               <a
                 tw="inline-block w-10 mr-2 p-2 bg-club-black-400 hover:bg-club-black-300 rounded"

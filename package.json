@@ -8,12 +8,15 @@
     "gatsby"
   ],
   "scripts": {
-    "start": "gatsby develop",
     "build": "gatsby build",
-    "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "lint": "eslint 'src/**/*.{js,ts,tsx}'",
+    "lint:fix": "eslint 'src/**/*.{js,ts,tsx}' --quiet --fix",
+    "migrate:new": "./scripts/create-migration.sh",
     "migrate": "./scripts/run-migrations.sh",
-    "migrate:new": "./scripts/create-migration.sh"
+    "serve": "gatsby serve",
+    "start": "gatsby develop",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.3",
@@ -39,11 +42,17 @@
     "@types/mime": "^2.0.3",
     "@types/react": "^17.0.4",
     "@types/styled-components": "^5.1.9",
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
+    "@typescript-eslint/parser": "^4.22.1",
     "babel-plugin-macros": "^3.0.1",
     "babel-plugin-styled-components": "^1.12.0",
     "contentful-management": "^7.17.6",
     "contentful-migration": "^4.1.1",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.22",
+    "prettier": "^2.3.0",
     "tailwindcss": "^2.1.1",
     "ts-node": "^9.1.1",
     "twin.macro": "^2.4.1",

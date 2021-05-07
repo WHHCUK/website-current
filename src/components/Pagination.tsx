@@ -3,7 +3,7 @@ import React from 'react';
 import tw from 'twin.macro';
 
 const PageLink = tw(
-  Link
+  Link,
 )`mx-1 px-2 rounded hover:bg-gray-50 hover:text-gray-800`;
 
 const DirectionalLink = tw(Link)`px-4 text-gray-400 hover:text-gray-500`;
@@ -56,7 +56,7 @@ const Pagination: React.FC<Props> = ({
 
           <div tw="p-2 border-r border-l text-gray-500">
             {Array.from({ length: numPages }).map((_, index) => {
-              let page = index + 1;
+              const page = index + 1;
               const to = getPath(page);
 
               if (page === currentPage) {

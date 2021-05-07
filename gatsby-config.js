@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 require('dotenv').config({
   path: '.env',
 });
@@ -8,6 +9,7 @@ const plugins = [
     options: {
       accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       spaceId: process.env.CONTENTFUL_SPACE_ID,
+      host: process.env.CONTENTFUL_HOST,
     },
   },
   'gatsby-transformer-sharp',
