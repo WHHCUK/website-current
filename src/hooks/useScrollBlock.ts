@@ -5,15 +5,15 @@ const safeDocument = typeof document !== 'undefined' ? document : undefined;
 export default () => {
   const scrollBlocked = useRef<unknown>();
   const html = safeDocument?.documentElement;
-  const body  = safeDocument?.body;
+  const body = safeDocument?.body;
 
   const blockScroll = () => {
-    if (!body || !body.style || scrollBlocked.current) return;
+    if (!html || !body || !body.style || scrollBlocked.current) return;
 
     const scrollBarWidth = window.innerWidth - html.clientWidth;
     const bodyPaddingRight =
       parseInt(
-        window.getComputedStyle(body).getPropertyValue('padding-right')
+        window.getComputedStyle(body).getPropertyValue('padding-right'),
       ) || 0;
 
     /**
@@ -32,7 +32,7 @@ export default () => {
   };
 
   const allowScroll = () => {
-    if (!body || !body.style || !scrollBlocked.current) return;
+    if (!html || !body || !body.style || !scrollBlocked.current) return;
 
     html.style.position = '';
     html.style.overflow = '';

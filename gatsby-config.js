@@ -2,12 +2,17 @@ require('dotenv').config({
   path: '.env',
 });
 
+console.log('abc-123', {
+  CONTENTFUL_HOST: process.env.CONTENTFUL_HOST,
+});
+
 const plugins = [
   {
     resolve: 'gatsby-source-contentful',
     options: {
       accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       spaceId: process.env.CONTENTFUL_SPACE_ID,
+      host: process.env.CONTENTFUL_HOST,
     },
   },
   'gatsby-transformer-sharp',

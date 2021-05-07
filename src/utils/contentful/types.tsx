@@ -29,7 +29,7 @@ export interface NewsArticle<
   AuthorImageType = GatsbyImageFluidProps,
   FeatureImageType = GatsbyImageFluidProps,
   GalleryImageType = GatsbyImageFluidProps,
-  ThumbImageType = GatsbyImageFluidProps
+  ThumbImageType = GatsbyImageFluidProps,
 > {
   author: Member<AuthorImageType>;
   body: RawDocument;

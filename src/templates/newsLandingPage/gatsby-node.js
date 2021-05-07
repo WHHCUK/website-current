@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 
 const ARTICLES_PER_PAGE = 12;
@@ -19,7 +20,7 @@ async function createPaginationForNewsArticles(graphql, actions) {
 
   if (newsArticles.errors) {
     reporter.panicOnBuild(
-      `Error while running GraphQL query for newsArticles .`
+      `Error while running GraphQL query for newsArticles .`,
     );
     return;
   }
@@ -51,7 +52,7 @@ async function createPaginationForNewsArticles(graphql, actions) {
   const { tags } = newsArticles.data.allContentfulNewsArticle;
 
   const tagPagePromises = tags.map(
-    createPaginationForNewsArticleTags(graphql, actions)
+    createPaginationForNewsArticleTags(graphql, actions),
   );
 
   await Promise.all([...pagePromises, ...tagPagePromises]);
@@ -67,7 +68,7 @@ function createPaginationForNewsArticleTags(graphql, actions) {
 
     if (newsArticlesForTag.errors) {
       reporter.panicOnBuild(
-        `Error while running GraphQL query for newsArticle(tag: ${tag}).`
+        `Error while running GraphQL query for newsArticle(tag: ${tag}).`,
       );
       return;
     }

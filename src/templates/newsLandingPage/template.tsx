@@ -1,9 +1,8 @@
-import { graphql, Link } from 'gatsby';
-import GatsbyImage from 'gatsby-image';
+import { graphql } from 'gatsby';
+
 import React from 'react';
 import tw from 'twin.macro';
 import ArticleGrid from '../../components/ArticleGrid';
-import { H1 } from '../../components/Headings';
 
 import Page from '../../components/Page';
 import Pagination from '../../components/Pagination';
@@ -44,12 +43,7 @@ const NewsLandingPage: React.FC<Props> = (props) => {
         <Container>
           <div tw="container mx-auto px-4">
             <div tw="mb-6 flex flex-wrap justify-center">
-              <PageHeader
-                heading={title}
-                // top={
-                //   <span tw="text-accent-500 font-bold">West Hampstead HC</span>
-                // }
-              />
+              <PageHeader heading={title} />
 
               <ArticleGrid articles={articles} />
 

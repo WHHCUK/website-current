@@ -42,15 +42,8 @@ interface Props {
 }
 
 const NewsArticlePage: React.FC<Props> = ({ data }) => {
-  const {
-    author,
-    body,
-    date,
-    feature,
-    gallery,
-    tag,
-    title,
-  } = data.contentfulNewsArticle;
+  const { author, body, date, feature, gallery, tag, title } =
+    data.contentfulNewsArticle;
 
   return (
     <Page currentPath="/news">
