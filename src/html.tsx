@@ -23,6 +23,7 @@ export default function HTML(props: Props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         {props.headComponents}
+        <style>{'a { color: #ffffff }'}</style>
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
