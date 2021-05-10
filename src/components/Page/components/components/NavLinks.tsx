@@ -26,21 +26,27 @@ interface Props {
 
 const getLinks = ({ currentPath, links }: Props) =>
   links.map(([title, to]) => (
-    <li key={to}>
+    <li key={to} role="none">
       {currentPath === to ? (
-        <ActiveNavLink to={to}>{title}</ActiveNavLink>
+        <ActiveNavLink role="menuitem" to={to}>
+          {title}
+        </ActiveNavLink>
       ) : (
-        <InactiveNavLink to={to}>{title}</InactiveNavLink>
+        <InactiveNavLink role="menuitem" to={to}>
+          {title}
+        </InactiveNavLink>
       )}
     </li>
   ));
 
 export const NavLinks: React.FC<Props> = ({ currentPath, links }) => (
-  <ul tw="flex w-auto space-x-1 justify-end">
+  <ul role="menu" tw="flex w-auto space-x-1 justify-end">
     {getLinks({ currentPath, links })}
   </ul>
 );
 
 export const NavLinksMobile: React.FC<Props> = ({ currentPath, links }) => (
-  <ul tw="space-y-4 w-full">{getLinks({ currentPath, links })}</ul>
+  <ul role="menu" tw="space-y-4 w-full">
+    {getLinks({ currentPath, links })}
+  </ul>
 );

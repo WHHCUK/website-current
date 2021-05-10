@@ -9,7 +9,7 @@ const ImageContainer = tw.div`mr-4`;
 const Image = tw(GatsbyImage)`w-12 h-12 object-cover object-top rounded-full`;
 const Text = tw.div`text-left`;
 const Name = tw.span`text-gray-500 font-bold`;
-const Role = tw.p`text-sm text-accent-500 font-semibold`;
+const Role = tw.p`text-sm text-gray-500 font-semibold`;
 
 interface Props {
   member: Member;

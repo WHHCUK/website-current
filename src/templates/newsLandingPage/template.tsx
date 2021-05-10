@@ -19,7 +19,7 @@ interface Props {
       totalCount: number;
       nodes: Pick<
         NewsArticle,
-        'author' | 'date' | 'slug' | 'tag' | 'thumbnail' | 'title'
+        'date' | 'slug' | 'tag' | 'thumbnail' | 'title'
       >[];
     };
   };
@@ -76,16 +76,6 @@ export const query = graphql`
     ) {
       nodes {
         date
-        author {
-          avatar {
-            fluid(toFormat: WEBP, quality: 90) {
-              ...GatsbyContentfulFluid
-            }
-          }
-          email
-          name
-          role
-        }
         slug
         tag
         thumbnail {

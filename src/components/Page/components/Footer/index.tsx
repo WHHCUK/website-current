@@ -7,9 +7,12 @@ import FacebookIcon from '../../../../assets/images/social/facebook.svg';
 import InstagramIcon from '../../../../assets/images/social/instagram.svg';
 import TwitterIcon from '../../../../assets/images/social/twitter.svg';
 
+import Text from '../../../Text';
 import Brand from '../components/Brand';
+import SocialMediaIcon from './components/SocialMediaIcon';
 
 const StyledFooter = tw.footer`py-20 bg-club-black-500 text-gray-300`;
+const Slogan = tw(Text)`text-gray-200 text-lg lg:text-xl leading-snug`;
 
 interface FooterColumnLink {
   contentful_id: string;
@@ -62,43 +65,33 @@ const Footer: React.FC = () => {
     <StyledFooter>
       <div tw="container mx-auto px-4">
         <div tw="flex flex-wrap">
-          <div tw="w-full lg:w-1/3 mb-16 lg:mb-0 space-y-4">
-            <Brand />
-            {data.slogan && (
-              <p tw="mb-4 max-w-sm  leading-loose">{data.slogan.slogan}</p>
-            )}
+          <div tw="w-full lg:w-1/3 mb-16 lg:mb-0 space-y-6">
+            <Brand as="h2" />
+            {data.slogan && <Slogan>{data.slogan.slogan}</Slogan>}
+
             <div>
-              <a
-                tw="inline-block w-10 mr-2 p-2 bg-club-black-400 hover:bg-club-black-300 rounded"
-                href={data.facebook}
-                target="_blank"
-                rel="nofollow noreferrer external"
-              >
-                <img tw="mx-auto" src={FacebookIcon} />
-              </a>
-              <a
-                tw="inline-block w-10 mr-2 p-2 bg-club-black-400 hover:bg-club-black-300 rounded"
-                href={data.twitter}
-                target="_blank"
-                rel="nofollow noreferrer external"
-              >
-                <img tw="mx-auto" src={TwitterIcon} />
-              </a>
-              <a
-                tw="inline-block w-10 p-2 bg-club-black-400 hover:bg-club-black-300 rounded"
-                href={data.instagram}
-                target="_blank"
-                rel="nofollow noreferrer external"
-              >
-                <img tw="mx-auto" src={InstagramIcon} />
-              </a>
+              <SocialMediaIcon
+                name="Facebook"
+                url={data.facebook}
+                icon={FacebookIcon}
+              />
+              <SocialMediaIcon
+                name="Twitter"
+                url={data.twitter}
+                icon={TwitterIcon}
+              />
+              <SocialMediaIcon
+                name="Instagram"
+                url={data.instagram}
+                icon={InstagramIcon}
+              />
             </div>
           </div>
           <div tw="w-full lg:w-2/3 lg:pl-16 flex flex-wrap justify-between md:  flex-row-reverse">
             <div tw="w-full md:w-1/2 mb-16 md:mb-0">
-              <h3 tw="mb-6 text-2xl font-bold text-white">
+              <h2 tw="mb-6 text-2xl font-bold text-white">
                 {data.footerColumn2Header}
-              </h3>
+              </h2>
               <div tw="md:flex justify-between">
                 <ul tw="md:w-1/2">
                   {data.footerColumn2Links
@@ -131,9 +124,9 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <div tw="w-full md:w-1/2 mb-16 md:mb-0">
-              <h3 tw="mb-6 text-2xl font-bold text-white">
+              <h2 tw="mb-6 text-2xl font-bold text-white">
                 {data.footerColumn1Header}
-              </h3>
+              </h2>
               <ul>
                 {data.footerColumn1Links.map((link) => (
                   <li key={link.contentful_id} tw="mb-4">

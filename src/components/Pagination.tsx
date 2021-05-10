@@ -37,7 +37,10 @@ const Pagination: React.FC<Props> = ({
           tw="flex items-center bg-white shadow rounded"
           aria-label="Pagination"
         >
-          <DirectionalLink to={getPath(Math.max(1, currentPage - 1))}>
+          <DirectionalLink
+            title="Previous page"
+            to={getPath(Math.max(1, currentPage - 1))}
+          >
             <svg
               tw="w-4 h-4"
               xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +94,10 @@ const Pagination: React.FC<Props> = ({
             })}
           </div>
 
-          <DirectionalLink to={getPath(Math.min(currentPage + 1, numPages))}>
+          <DirectionalLink
+            title="Next page"
+            to={getPath(Math.min(currentPage + 1, numPages))}
+          >
             <svg
               tw="w-4 h-4"
               xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +110,7 @@ const Pagination: React.FC<Props> = ({
                 stroke-linejoin="round"
                 strokeWidth="2"
                 d="M14 5l7 7m0 0l-7 7m7-7H3"
-              ></path>
+              />
             </svg>
           </DirectionalLink>
         </nav>

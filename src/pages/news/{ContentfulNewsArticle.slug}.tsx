@@ -25,13 +25,13 @@ const Body = tw.div`
 
 const DateText = tw.span`
   text-base lg:text-xl
-  text-gray-400
+  text-gray-500
 `;
 
 const Tag = tw(Link)`
   text-base lg:text-xl
   hover:underline
-  text-accent-500 hover:text-accent-600 font-bold
+  text-accent-600 hover:text-accent-700 font-bold
 `;
 
 interface Props {

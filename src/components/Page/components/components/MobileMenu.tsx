@@ -20,6 +20,9 @@ export const MobileMenuOpenButton: React.FC<Pick<Props, 'setIsOpen'>> = ({
 }) => (
   <Button
     type="button"
+    aria-expanded="false"
+    aria-haspopup="true"
+    aria-label="show mobile menu"
     aria-controls="mobile-menu"
     onClick={() => setIsOpen(true)}
   >
@@ -46,7 +49,12 @@ export const MobileMenuOpenButton: React.FC<Pick<Props, 'setIsOpen'>> = ({
 export const MobileMenuCloseButton: React.FC<Pick<Props, 'setIsOpen'>> = ({
   setIsOpen,
 }) => (
-  <button onClick={() => setIsOpen(false)}>
+  <button
+    aria-label="close menu"
+    aria-pressed="true"
+    aria-controls="mobile-menu"
+    onClick={() => setIsOpen(false)}
+  >
     <svg
       tw="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
       xmlns="http://www.w3.org/2000/svg"
@@ -76,6 +84,8 @@ export const MobileMenu: React.FC<Props> = ({
 
   return (
     <div
+      style={{ display: isOpen ? 'block' : 'none' }}
+      id="mobile-menu"
       tw="lg:hidden z-50 fixed top-0 left-0 right-0 bottom-0"
       onClick={() => setIsOpen(false)}
     >
