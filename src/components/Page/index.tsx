@@ -12,7 +12,7 @@ const Page: React.FC<Props> = ({ children, currentPath }) => (
   <div>
     <GlobalStyles />
     <Header currentPath={currentPath} />
-    <div tw="mt-10 lg:mt-0">{children}</div>
+    <div tw="mt-10 lg:mt-0 bg-gray-50">{children}</div>
     <Footer />
   </div>
 );

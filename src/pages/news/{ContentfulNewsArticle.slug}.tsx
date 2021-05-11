@@ -1,11 +1,10 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react';
 import tw from 'twin.macro';
-import ArticleGrid from '../../components/ArticleGrid';
 
+import ArticleGrid from '../../components/ArticleGrid';
 import Avatar from '../../components/Avatar';
 import FeatureImage from '../../components/FeatureImage';
-import { H2 } from '../../components/Headings';
 import Gallery from '../../components/Gallery';
 import Page from '../../components/Page';
 import PageHeader from '../../components/PageHeader';

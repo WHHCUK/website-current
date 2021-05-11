@@ -106,7 +106,7 @@ exports.createResolvers = ({ createResolvers }) => {
     ContentfulNewsArticle: {
       similar: {
         type: ['ContentfulNewsArticle'],
-        resolve: async (source, args, context, info) => {
+        resolve: async (source, args, context) => {
           const { slug, tag } = source;
 
           const similar = await context.nodeModel.runQuery({

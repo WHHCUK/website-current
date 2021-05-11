@@ -2,13 +2,13 @@ import { Link } from 'gatsby';
 import React from 'react';
 import tw from 'twin.macro';
 
-const PageLink = tw(
-  Link,
-)`mx-1 px-2 rounded hover:bg-gray-50 hover:text-gray-800`;
-
 const DirectionalLink = tw(Link)`px-4 text-gray-400 hover:text-gray-500`;
 
-const ActivePageLink = tw(PageLink)`bg-gray-50 font-bold`;
+const PageLink = tw(
+  Link,
+)`mx-1 px-2 rounded hover:bg-gray-100 text-gray-500 hover:text-gray-800`;
+
+const ActivePageLink = tw(PageLink)`bg-gray-100 text-gray-500  font-bold`;
 const Spacer: React.FC = () => <span tw="mx-3">...</span>;
 
 interface Props {

@@ -4,34 +4,35 @@ import tw from 'twin.macro';
 
 import { FluidImageProps } from '../utils/contentful';
 
-const GalleryContainer = tw.div`w-full lg:px-24`;
-const RowContainer = tw.div`md:flex md:mb-4 md:ml--4 w-full`;
-const ImageContainer = tw.div`mb-4 md:mb-0 md:ml-4`;
+const GalleryContainer = tw.div`w-full`;
+const PaddedGalleryContainer = tw(GalleryContainer)`lg:px-24`;
+const RowContainer = tw.div`md:flex md:mb-4 px-2 w-full`;
+const ImageContainer = tw.div`mb-4 md:mb-0 md:mx-2`;
 const Image = tw(GatsbyImage)`rounded`;
 
 interface Props {
   images: FluidImageProps[];
+  pad?: boolean;
 }
 
-const Gallery: React.FC<Props> = ({ images }) => {
+const Gallery: React.FC<Props> = ({ images, pad = true }) => {
   const chunkedImages = images ? chunkImages(images) : [];
 
-  return (
-    <GalleryContainer>
-      {chunkedImages.map((row, rowIndex) => (
-        <RowContainer key={`row-${rowIndex}`}>
-          {row.map((image, index) => (
-            <ImageContainer
-              key={index}
-              style={{ flex: image.fluid.aspectRatio }}
-            >
-              <Image fluid={image.fluid} />
-            </ImageContainer>
-          ))}
-        </RowContainer>
+  const body = chunkedImages.map((row, rowIndex) => (
+    <RowContainer key={`row-${rowIndex}`}>
+      {row.map((image, index) => (
+        <ImageContainer key={index} style={{ flex: image.fluid.aspectRatio }}>
+          <Image fluid={image.fluid} />
+        </ImageContainer>
       ))}
-    </GalleryContainer>
-  );
+    </RowContainer>
+  ));
+
+  if (pad) {
+    return <PaddedGalleryContainer>{body}</PaddedGalleryContainer>;
+  }
+
+  return <GalleryContainer>{body}</GalleryContainer>;
 };
 
 export default Gallery;
