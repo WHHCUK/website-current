@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 import React from 'react';
 import tw from 'twin.macro';
@@ -12,6 +12,7 @@ import { slugToLabel } from '../../utils/strings';
 
 const Wrap = tw.section`py-20`;
 const Container = tw.div`container mx-auto px-2 lg:px-4`;
+const TagTitle = tw.h3`text-base lg:text-xl text-accent-600 font-bold mt--6`;
 
 interface Props {
   data: {
@@ -32,18 +33,20 @@ interface Props {
 
 const NewsLandingPage: React.FC<Props> = (props) => {
   const tag = slugToLabel(props.pageContext.tag);
-  const title = `${tag ? `${tag} ` : ''}News`;
 
   const articles = props.data.allContentfulNewsArticle.nodes;
 
   return (
     <Page currentPath="/news">
-      <title>{title} | WHHC</title>
+      <title>News | WHHC</title>
       <Wrap tw="bg-gray-50">
         <Container>
           <div tw="container mx-auto px-4">
             <div tw="mb-6 flex flex-wrap justify-center">
-              <PageHeader heading={title} />
+              <PageHeader
+                bottom={tag ? <TagTitle>{tag}</TagTitle> : undefined}
+                heading={tag ? <Link to="/news">News</Link> : 'News'}
+              />
 
               <ArticleGrid articles={articles} />
 

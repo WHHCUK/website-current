@@ -3,10 +3,10 @@ import tw from 'twin.macro';
 
 import { H2 } from './Headings';
 
-const Container = tw.div`mb-10 max-w-2xl mx-auto text-center`;
+const Container = tw.div`mb-10 max-w-3xl mx-auto text-center`;
 
 interface Props {
-  heading: string;
+  heading: string | JSX.Element;
   top?: JSX.Element;
   bottom?: JSX.Element;
 }

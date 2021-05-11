@@ -100,3 +100,52 @@ function createPaginationForNewsArticleTags(graphql, actions) {
     return Promise.all(pagePromises);
   };
 }
+
+exports.createResolvers = ({ createResolvers }) => {
+  const resolvers = {
+    ContentfulNewsArticle: {
+      similar: {
+        type: ['ContentfulNewsArticle'],
+        resolve: async (source, args, context, info) => {
+          const { slug, tag } = source;
+
+          const similar = await context.nodeModel.runQuery({
+            query: {
+              sort: {
+                fields: ['date'],
+                order: ['DESC'],
+              },
+              filter: {
+                tag: { eq: tag },
+                slug: { ne: slug },
+              },
+            },
+            type: 'ContentfulNewsArticle',
+          });
+
+          const slugs = [slug, ...similar.map((a) => a.slug)];
+
+          const mostRecent = await context.nodeModel.runQuery({
+            query: {
+              sort: {
+                fields: ['date'],
+                order: ['DESC'],
+              },
+              filter: {
+                tag: { ne: tag },
+                slug: { nin: slugs },
+              },
+            },
+            type: 'ContentfulNewsArticle',
+          });
+
+          return [...similar.slice(0, 2), ...mostRecent.slice(0, 3)]
+            .slice(0, 3)
+            .sort((a, b) => b.date.localeCompare(a.date));
+        },
+      },
+    },
+  };
+
+  createResolvers(resolvers);
+};

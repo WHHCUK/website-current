@@ -1,9 +1,11 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react';
 import tw from 'twin.macro';
+import ArticleGrid from '../../components/ArticleGrid';
 
 import Avatar from '../../components/Avatar';
 import FeatureImage from '../../components/FeatureImage';
+import { H2 } from '../../components/Headings';
 import Gallery from '../../components/Gallery';
 import Page from '../../components/Page';
 import PageHeader from '../../components/PageHeader';
@@ -36,13 +38,18 @@ const Tag = tw(Link)`
 
 interface Props {
   data: {
-    contentfulNewsArticle: Omit<NewsArticle, 'slug' | 'thumbnail'>;
+    contentfulNewsArticle: Omit<NewsArticle, 'slug' | 'thumbnail'> & {
+      similar: Pick<
+        NewsArticle,
+        'date' | 'slug' | 'tag' | 'thumbnail' | 'title'
+      >[];
+    };
   };
   params: { tag: string };
 }
 
 const NewsArticlePage: React.FC<Props> = ({ data }) => {
-  const { author, body, date, feature, gallery, tag, title } =
+  const { author, body, date, feature, gallery, similar, tag, title } =
     data.contentfulNewsArticle;
 
   return (
@@ -68,6 +75,11 @@ const NewsArticlePage: React.FC<Props> = ({ data }) => {
           </ReferencesContext.Provider>
 
           {gallery && <Gallery images={gallery} />}
+
+          <aside tw="mt-12">
+            <h2 tw="sr-only">Similar News</h2>
+            <ArticleGrid articles={similar} />
+          </aside>
         </Container>
       </Wrap>
     </Page>
@@ -141,6 +153,17 @@ export const query = graphql`
       }
       title
       tag
+      similar {
+        date
+        slug
+        tag
+        thumbnail {
+          fluid(toFormat: WEBP, quality: 90) {
+            ...GatsbyContentfulFluid
+          }
+        }
+        title
+      }
     }
   }
 `;
