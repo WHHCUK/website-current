@@ -6,9 +6,10 @@ import tw from 'twin.macro';
 import FacebookIcon from '../../../../assets/images/social/facebook.svg';
 import InstagramIcon from '../../../../assets/images/social/instagram.svg';
 import TwitterIcon from '../../../../assets/images/social/twitter.svg';
-
+import Container from '../../../Container';
 import Text from '../../../Text';
 import Brand from '../components/Brand';
+
 import SocialMediaIcon from './components/SocialMediaIcon';
 
 const StyledFooter = tw.footer`py-20 bg-club-black-500 text-gray-300`;
@@ -63,7 +64,7 @@ const Footer: React.FC = () => {
 
   return (
     <StyledFooter>
-      <div tw="container mx-auto px-4">
+      <Container>
         <div tw="flex flex-wrap">
           <div tw="w-full lg:w-1/3 mb-16 lg:mb-0 space-y-6">
             <Brand as="h2" />
@@ -145,7 +146,7 @@ const Footer: React.FC = () => {
         <p tw="lg:text-center text-sm text-gray-300 border-t border-club-black-400 pt-12 mt-16">
           © {format(new Date(), 'yyyy')}. All rights reserved.
         </p>
-      </div>
+      </Container>
     </StyledFooter>
   );
 };

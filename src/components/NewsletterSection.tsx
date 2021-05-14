@@ -1,20 +1,16 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import tw from 'twin.macro';
 
 import CheckIcon from '../assets/images/icons/check.svg';
 import CrossIcon from '../assets/images/icons/cross.svg';
 import NewspaperIcon from '../assets/images/icons/newspaper.svg';
-
-import { H2 } from './Headings';
 import useMailChimp, { MailChimpError } from '../hooks/useMailchimp';
-import { graphql, useStaticQuery } from 'gatsby';
+
+import Container from './Container';
+import { H2 } from './Headings';
 
 const Wrap = tw.section`bg-club-maroon-500 py-16`;
-const Container = tw.div`container mx-auto px-4`;
-const Form = tw.form`justify-center w-full pt-4`;
-const TextField = tw.input`flex-grow py-3 px-4 mr-4 text-xs rounded leading-loose flex-grow`;
-const Button = tw.button`flex-none py-2 px-6 rounded-xl bg-club-blue-600 hover:bg-club-blue-500 text-gray-50 font-bold leading-loose transition duration-200`;
-const ErrorMessage = tw.p`text-white text-sm`;
 
 interface QueryData {
   contentfulSiteSettings: {
@@ -109,10 +105,10 @@ const NewsletterSection: React.FC = () => {
                 </div>
               </div>
             ) : (
-              <Form onSubmit={handleFormSubmit}>
+              <form tw="justify-center w-full pt-4" onSubmit={handleFormSubmit}>
                 <div tw="flex w-full space-x-4 justify-center">
                   <div tw="flex-grow relative">
-                    <TextField
+                    <input
                       tw="w-full py-3 px-4 text-xs rounded leading-loose"
                       type="email"
                       placeholder={fieldPlaceholder}
@@ -149,17 +145,17 @@ const NewsletterSection: React.FC = () => {
                       )}
                     </div>
                   </div>
-                  <Button
+                  <button
                     tw="flex-none py-2 px-6 rounded-xl bg-club-blue-600 hover:bg-club-blue-500 text-gray-50 font-bold leading-loose transition duration-200"
                     type="submit"
                   >
                     {submitText}
-                  </Button>
+                  </button>
                 </div>
                 <div tw="flex h-4 items-end mt-2">
-                  {error && <ErrorMessage>{getError(error)}</ErrorMessage>}
+                  {error && <p tw="text-white text-sm">{getError(error)}</p>}
                 </div>
-              </Form>
+              </form>
             )}
           </div>
         </div>

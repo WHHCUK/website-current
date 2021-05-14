@@ -10,9 +10,9 @@ import Pagination from '../../components/Pagination';
 import PageHeader from '../../components/PageHeader';
 import { NewsArticle } from '../../utils/contentful';
 import { slugToLabel } from '../../utils/strings';
+import Container from '../../components/Container';
 
 const Wrap = tw.section`py-20`;
-const Container = tw.div`container mx-auto px-2 lg:px-4`;
 const TagTitle = tw.h3`text-base lg:text-xl text-accent-600 font-bold mt--6`;
 
 interface Props {
@@ -42,25 +42,23 @@ const NewsLandingPage: React.FC<Props> = (props) => {
       <title>News | WHHC</title>
       <Wrap tw="bg-gray-50">
         <Container>
-          <div tw="container mx-auto px-4">
-            <div tw="mb-6 flex flex-wrap justify-center">
-              <PageHeader
-                bottom={tag ? <TagTitle>{tag}</TagTitle> : undefined}
-                heading={tag ? <Link to="/news">News</Link> : 'News'}
-              />
+          <div tw="mb-6 flex flex-wrap justify-center">
+            <PageHeader
+              bottom={tag ? <TagTitle>{tag}</TagTitle> : undefined}
+              heading={tag ? <Link to="/news">News</Link> : 'News'}
+            />
 
-              <ArticleGrid articles={articles} />
+            <ArticleGrid articles={articles} />
 
-              <Pagination
-                currentPage={props.pageContext.currentPage}
-                numPages={props.pageContext.numPages}
-                path={
-                  props.pageContext.tag
-                    ? `/news/${props.pageContext.tag}`
-                    : '/news'
-                }
-              />
-            </div>
+            <Pagination
+              currentPage={props.pageContext.currentPage}
+              numPages={props.pageContext.numPages}
+              path={
+                props.pageContext.tag
+                  ? `/news/${props.pageContext.tag}`
+                  : '/news'
+              }
+            />
           </div>
         </Container>
       </Wrap>
