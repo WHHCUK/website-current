@@ -4,6 +4,7 @@ import React from 'react';
 import tw from 'twin.macro';
 import ArticleGrid from '../../components/ArticleGrid';
 
+import NewsletterSection from '../../components/NewsletterSection';
 import Page from '../../components/Page';
 import Pagination from '../../components/Pagination';
 import PageHeader from '../../components/PageHeader';
@@ -63,6 +64,7 @@ const NewsLandingPage: React.FC<Props> = (props) => {
           </div>
         </Container>
       </Wrap>
+      <NewsletterSection />
     </Page>
   );
 };

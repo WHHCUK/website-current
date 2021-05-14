@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 
 import Gallery from '../components/Gallery';
 import { H4 } from '../components/Headings';
-import NewsletterForm from '../components/NewsletterForm';
+import NewsletterSection from '../components/NewsletterSection';
 import Page from '../components/Page';
 import PageHeader from '../components/PageHeader';
 import { NewsArticle } from '../utils/contentful';
@@ -66,7 +66,7 @@ const PhotosPage: React.FC<Props> = ({ data }) => {
           </div>
         </Container>
       </Wrap>
-      <NewsletterForm />
+      <NewsletterSection />
     </Page>
   );
 };

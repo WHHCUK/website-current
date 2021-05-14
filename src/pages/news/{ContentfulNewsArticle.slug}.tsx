@@ -6,6 +6,7 @@ import ArticleGrid from '../../components/ArticleGrid';
 import Avatar from '../../components/Avatar';
 import FeatureImage from '../../components/FeatureImage';
 import Gallery from '../../components/Gallery';
+import NewsletterSection from '../../components/NewsletterSection';
 import Page from '../../components/Page';
 import PageHeader from '../../components/PageHeader';
 import {
@@ -81,6 +82,7 @@ const NewsArticlePage: React.FC<Props> = ({ data }) => {
           </aside>
         </Container>
       </Wrap>
+      <NewsletterSection />
     </Page>
   );
 };
