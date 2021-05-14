@@ -9,19 +9,19 @@ import createAliasRecord from './helpers/createAliasRecord';
 import crawlDirectory from './helpers/crawl-directory';
 
 const contentBucket = new aws.s3.Bucket('contentBucket', {
-    bucket: config.url,
-    acl: 'public-read',
-    website: {
-      indexDocument: 'index.html',
-      errorDocument: 'index.html',
-    },
-  });
+  bucket: config.url,
+  acl: 'public-read',
+  website: {
+    indexDocument: 'index.html',
+    errorDocument: 'index.html',
+  },
+});
 
 const webContentsRootPath = path.join(process.cwd(), 'public');
 
 crawlDirectory(webContentsRootPath, (filePath: string) => {
   const relativeFilePath = filePath.replace(webContentsRootPath + '/', '');
-  
+
   new aws.s3.BucketObject(
     relativeFilePath,
     {
@@ -73,7 +73,9 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
   },
   priceClass: 'PriceClass_100',
 
-  customErrorResponses: [{ errorCode: 404, responseCode: 404, responsePagePath: '/index.html' }],
+  customErrorResponses: [
+    { errorCode: 404, responseCode: 404, responsePagePath: '/index.html' },
+  ],
 
   restrictions: {
     geoRestriction: {
@@ -86,7 +88,6 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
     sslSupportMethod: 'sni-only',
   },
 };
-
 
 const cdn = new aws.cloudfront.Distribution('cdn', distributionArgs);
 
