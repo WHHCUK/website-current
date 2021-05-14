@@ -1,4 +1,4 @@
-import { MigrationFunction } from 'contentful-migration'
+import { MigrationFunction } from 'contentful-migration';
 
 const TAGS = [
   'charity',
@@ -12,10 +12,10 @@ const TAGS = [
   'mixed',
   'socials',
   'summer',
-  'umpires'
+  'umpires',
 ];
 
-export = function (migration, { makeRequest, spaceId, accessToken }) {
+export = async function (migration) {
   const newsArticle = migration.createContentType('news-article', {
     name: 'News Article',
     displayField: 'title',
@@ -34,7 +34,7 @@ export = function (migration, { makeRequest, spaceId, accessToken }) {
     validations: [{ unique: true }],
   });
 
-  newsArticle.changeFieldControl('slug','builtin','slugEditor');
+  newsArticle.changeFieldControl('slug', 'builtin', 'slugEditor');
 
   newsArticle.createField('date', {
     name: 'Date',
@@ -47,30 +47,27 @@ export = function (migration, { makeRequest, spaceId, accessToken }) {
     ampm: '12',
   });
 
-
   newsArticle.createField('thumbnail', {
     name: 'Thumbnail',
     type: 'Link',
-    linkType: "Asset",
+    linkType: 'Asset',
     required: true,
-    validations: [{ linkMimetypeGroup: ["image"]}],
+    validations: [{ linkMimetypeGroup: ['image'] }],
   });
 
   newsArticle.createField('hero', {
     name: 'Hero Image',
     type: 'Link',
-    linkType: "Asset",
+    linkType: 'Asset',
     required: false,
-    validations: [{ linkMimetypeGroup: ["image"]}],
+    validations: [{ linkMimetypeGroup: ['image'] }],
   });
 
   newsArticle.createField('tag', {
     name: 'Tag',
-    type: "Symbol",
+    type: 'Symbol',
     required: true,
-    validations: [
-      { in: TAGS }
-    ],
+    validations: [{ in: TAGS }],
   });
 
   newsArticle.changeFieldControl('tags', 'builtin', 'checkbox');
@@ -81,9 +78,10 @@ export = function (migration, { makeRequest, spaceId, accessToken }) {
     required: true,
 
     validations: [
-      { size: { min: 500 }},
-      { enabledMarks: [ 'bold', 'italic' ]},
-      { enabledNodeTypes: [
+      { size: { min: 500 } },
+      { enabledMarks: ['bold', 'italic'] },
+      {
+        enabledNodeTypes: [
           'heading-3',
           'heading-4      ',
           'unordered-list',
@@ -91,14 +89,14 @@ export = function (migration, { makeRequest, spaceId, accessToken }) {
           'blockquote',
           'hyperlink',
           'entry-hyperlink',
-          "embedded-asset-block"
+          'embedded-asset-block',
         ],
       },
       {
         nodes: {
-          'entry-hyperlink': [ { linkContentType: [ 'news-article' ] } ]
-        }
-      }
+          'entry-hyperlink': [{ linkContentType: ['news-article'] }],
+        },
+      },
     ],
   });
-} as MigrationFunction
+} as MigrationFunction;

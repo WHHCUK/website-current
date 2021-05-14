@@ -5,9 +5,9 @@ TXT_GREEN=$(tput setaf 2)
 TXT_YELLOW=$(tput setaf 3)
 TXT_RESET=$(tput sgr0)
 
-if [ -f ./.env ]
+if [ -f ./.env.production ]
   then
-    export $(cat .env | xargs)
+    export $(cat ./.env.production | xargs)
   else 
     echo "${TXT_RED}no .env file found${TXT_RESET}"
     exit 1

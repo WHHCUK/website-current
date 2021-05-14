@@ -1,6 +1,6 @@
-import { MigrationFunction } from 'contentful-migration'
+import { MigrationFunction } from 'contentful-migration';
 
-export = function (migration, { makeRequest, spaceId, accessToken }) {
+export = async function (migration) {
   const member = migration.createContentType('member', {
     name: 'Member',
     displayField: 'name',
@@ -22,20 +22,21 @@ export = function (migration, { makeRequest, spaceId, accessToken }) {
     name: 'Email',
     type: 'Symbol',
     required: false,
-    validations: [{ regexp: { pattern: "^\\w[\\w.-]*@whhc.uk$" }}],
+    validations: [{ regexp: { pattern: '^\\w[\\w.-]*@whhc.uk$' } }],
   });
 
   member.createField('avatar', {
     name: 'Avatar',
     type: 'Link',
-    linkType: "Asset",
+    linkType: 'Asset',
     required: true,
     validations: [
-      { linkMimetypeGroup: ["image"]},
-      { assetImageDimensions: { 
-          height: { min: 128 }, 
-          width: { min: 128 }
-        }
+      { linkMimetypeGroup: ['image'] },
+      {
+        assetImageDimensions: {
+          height: { min: 128 },
+          width: { min: 128 },
+        },
       },
     ],
   });
@@ -45,14 +46,12 @@ export = function (migration, { makeRequest, spaceId, accessToken }) {
   newsArticle.createField('author', {
     name: 'Author',
     type: 'Link',
-    linkType: "Entry",
+    linkType: 'Entry',
     required: true,
-    validations: [
-      { linkContentType: ["member"] }
-    ],
+    validations: [{ linkContentType: ['member'] }],
   });
 
   newsArticle.moveField('author').beforeField('date');
 
-  newsArticle.changeFieldControl('author','builtin','entryCardEditor');
-} as MigrationFunction
+  newsArticle.changeFieldControl('author', 'builtin', 'entryCardEditor');
+} as MigrationFunction;

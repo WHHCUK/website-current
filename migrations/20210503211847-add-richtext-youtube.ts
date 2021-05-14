@@ -1,6 +1,6 @@
-import { MigrationFunction } from 'contentful-migration'
+import { MigrationFunction } from 'contentful-migration';
 
-export = function (migration, { makeRequest, spaceId, accessToken }) {
+export = async function (migration) {
   const youtube = migration.createContentType('youtube', {
     name: 'Richtext: Youtube',
     displayField: 'name',
@@ -16,43 +16,45 @@ export = function (migration, { makeRequest, spaceId, accessToken }) {
     name: 'YouTube url',
     type: 'Symbol',
     required: true,
-    "validations": [
+    validations: [
       {
-        "regexp": {
-          "pattern": "^https://(www\\.)?youtu(\\.be\\/|be\\.com/watch\\?v=)[A-Za-z]"
+        regexp: {
+          pattern:
+            '^https://(www\\.)?youtu(\\.be\\/|be\\.com/watch\\?v=)[A-Za-z]',
         },
-        "message": "https://youtu.be/s5BlrxYEgv4"
-      }
+        message: 'https://youtu.be/s5BlrxYEgv4',
+      },
     ],
   });
-  
-  youtube.changeFieldControl('url','builtin','urlEditor');
+
+  youtube.changeFieldControl('url', 'builtin', 'urlEditor');
 
   const newsArticle = migration.editContentType('news-article');
 
   newsArticle.editField('body', {
     type: 'RichText',
     validations: [
-      { size: { min: 500 }},
-      { enabledMarks: [ 'bold', 'italic' ]},
-      { enabledNodeTypes: [
-          "blockquote",
-          "embedded-asset-block",
-          "embedded-entry-block",
-          "entry-hyperlink",
-          "heading-3",
-          "heading-4",
-          "hyperlink",
-          "ordered-list",
-          "unordered-list",
+      { size: { min: 500 } },
+      { enabledMarks: ['bold', 'italic'] },
+      {
+        enabledNodeTypes: [
+          'blockquote',
+          'embedded-asset-block',
+          'embedded-entry-block',
+          'entry-hyperlink',
+          'heading-3',
+          'heading-4',
+          'hyperlink',
+          'ordered-list',
+          'unordered-list',
         ],
       },
       {
         nodes: {
-          'entry-hyperlink': [ { linkContentType: [ 'news-article' ] } ],
-          "embedded-entry-block": [ { linkContentType: ['youtube' ] } ],
-        }
-      }
+          'entry-hyperlink': [{ linkContentType: ['news-article'] }],
+          'embedded-entry-block': [{ linkContentType: ['youtube'] }],
+        },
+      },
     ],
   });
-} as MigrationFunction
+} as MigrationFunction;

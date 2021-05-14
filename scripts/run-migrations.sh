@@ -10,9 +10,9 @@ TXT_RESET=$(tput sgr0)
 
 LOCK_FILE=./migrations/.migrations.lock
 
-if [ -f ./.env ]
+if [ -f ./.env.production ]
   then
-    export $(cat .env | xargs)
+    export $(cat ./.env.production | xargs)
   else 
     echo "${TXT_RED}no .env file found${TXT_RESET}"
     exit 1

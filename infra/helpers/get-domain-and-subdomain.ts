@@ -1,4 +1,7 @@
-function getDomainAndSubdomain(domain: string): { subdomain: string; domain: string } {
+function getDomainAndSubdomain(domain: string): {
+  subdomain: string;
+  domain: string;
+} {
   const parts = domain.split('.');
 
   if (parts.length < 2) {
@@ -10,9 +13,9 @@ function getDomainAndSubdomain(domain: string): { subdomain: string; domain: str
   }
 
   const subdomain = parts[0];
-  
+
   parts.shift();
-  
+
   return {
     subdomain,
     domain: parts.join('.'),
