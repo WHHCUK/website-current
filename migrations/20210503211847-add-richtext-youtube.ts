@@ -34,7 +34,6 @@ export = async function (migration) {
   newsArticle.editField('body', {
     type: 'RichText',
     validations: [
-      { size: { min: 500 } },
       { enabledMarks: ['bold', 'italic'] },
       {
         enabledNodeTypes: [
@@ -52,7 +51,7 @@ export = async function (migration) {
       {
         nodes: {
           'entry-hyperlink': [{ linkContentType: ['news-article'] }],
-          'embedded-entry-block': [{ linkContentType: ['youtube'] }],
+          'embedded-entry-block': [{ linkContentType: ['affiliate-section'] }],
         },
       },
     ],

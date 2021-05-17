@@ -20,8 +20,8 @@ const Header: React.FC<Props> = ({ currentPath }) => {
   const navLinks: [string, string][] = [
     ['News', '/news'],
     ['Events', '/events'],
-    ['Fixtures', '/fixtures'],
-    ['Teams', '/teams'],
+    // ['Fixtures', '/fixtures'],
+    // ['Teams', '/teams'],
     ['Photos', '/photos'],
     ['Club Info', '/club-info'],
   ];
@@ -43,7 +43,7 @@ const Header: React.FC<Props> = ({ currentPath }) => {
             <NavLinks currentPath={currentPath} links={navLinks} />
 
             <NavButtonWrap>
-              <NavButton label="Pay Subs" to="/register" />
+              {/* <NavButton label="Pay Subs" to="/register" /> */}
               <NavButton label="Join" to="/join" color="black" />
             </NavButtonWrap>
           </div>

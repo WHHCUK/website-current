@@ -1,2 +1,2 @@
-import infra from "./infra";
+import infra from './infra';
 module.exports = infra;

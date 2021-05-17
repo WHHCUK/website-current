@@ -19,12 +19,27 @@ export interface RawDocument<T = FluidImageProps> {
 export const isRawDocument = (document: any): document is RawDocument =>
   document.hasOwnProperty('raw');
 
+export interface Affiliate<AffiliateImageType = FluidImageProps> {
+  name: string;
+  url: string;
+  logo: AffiliateImageType;
+}
+
+export interface Homepage<HeroImageType = FluidImageProps> {
+  heroHeading: string;
+  heroText: string;
+  heroImage: HeroImageType;
+  affiliateHeading: string;
+  affiliates: Affiliate[];
+}
+
 export interface Member<AvatarImageType = FluidImageProps> {
   name: string;
   role?: string;
   email?: string;
   avatar: AvatarImageType;
 }
+
 export interface NewsArticle<
   AuthorImageType = FluidImageProps,
   FeatureImageType = FluidImageProps,

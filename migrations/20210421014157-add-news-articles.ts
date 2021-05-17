@@ -78,7 +78,6 @@ export = async function (migration) {
     required: true,
 
     validations: [
-      { size: { min: 500 } },
       { enabledMarks: ['bold', 'italic'] },
       {
         enabledNodeTypes: [

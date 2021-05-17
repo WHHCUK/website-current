@@ -6,6 +6,7 @@ import { BLOCKS, Document, INLINES } from '@contentful/rich-text-types';
 import React from 'react';
 
 import BlockQuote from '../../components/BlockQuote';
+import Container from '../../components/Container';
 import ExternalLink from '../../components/ExternalLink';
 import { H1, H2, H3, H4, H5, H6 } from '../../components/Headings';
 import { LI, OL, UL } from '../../components/Lists';

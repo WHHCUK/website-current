@@ -7,3 +7,6 @@
 20210504002713-create-site-setting-entry.ts
 20210504013808-add-page-content-model.ts
 20210514135712-add-newsletter-sign-up-to-site-settings.ts
+20210514145540-add-affiliates.ts
+20210514155240-add-fields-to-pages.ts
+20210517012438-add-homepage.ts

@@ -27,7 +27,7 @@ interface QueryData {
 }
 
 const query = graphql`
-  query NewsletterSecion {
+  query NewsletterSection {
     contentfulSiteSettings(name: { eq: "Site Settings" }) {
       newsletterHeading
       newsletterText

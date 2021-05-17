@@ -32,7 +32,7 @@ const Pagination: React.FC<Props> = ({
 
   return (
     <div>
-      <div tw="flex justify-center">
+      <div tw="flex justify-center mt-12">
         <nav
           tw="flex items-center bg-white shadow rounded"
           aria-label="Pagination"

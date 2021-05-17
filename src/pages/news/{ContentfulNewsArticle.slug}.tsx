@@ -4,6 +4,7 @@ import tw from 'twin.macro';
 
 import ArticleGrid from '../../components/ArticleGrid';
 import Avatar from '../../components/Avatar';
+import Container from '../../components/Container';
 import FeatureImage from '../../components/FeatureImage';
 import Gallery from '../../components/Gallery';
 import NewsletterSection from '../../components/NewsletterSection';
@@ -18,7 +19,6 @@ import { isoToShortDate } from '../../utils/dates';
 import { slugToLabel } from '../../utils/strings';
 
 const Wrap = tw.section`py-20`;
-const Container = tw.div`container mx-auto px-4`;
 
 const Body = tw.div`
   max-w-2xl
