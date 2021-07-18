@@ -2,28 +2,29 @@ import React from 'react';
 import tw from 'twin.macro';
 
 import useScrollBlock from '../../../../hooks/useScrollBlock';
+import Brand from '../../../Brand';
 
-import Brand from '../components/Brand';
-import { MobileMenu, MobileMenuOpenButton } from '../components/MobileMenu';
-import { NavButton, NavButtonWrap } from '../components/NavButtons';
-import { NavLinks } from '../components/NavLinks';
+import {
+  MobileMenu,
+  MobileMenuOpenButton,
+} from '../Footer/components/MobileMenu';
+import { NavButton, NavButtonWrap } from './components/NavButtons';
+import { NavLinks } from './components/NavLinks';
 
-interface Props {
-  currentPath?: string;
-}
+export type NavLinksType = [string, string][];
 
 const Container = tw.section`
     border-b-6 border-club-black-500 shadow-xl
 `;
 
-const Header: React.FC<Props> = ({ currentPath }) => {
-  const navLinks: [string, string][] = [
-    ['News', '/news'],
-    ['Events', '/events'],
-    // ['Fixtures', '/fixtures'],
-    // ['Teams', '/teams'],
-    ['Photos', '/photos'],
-    ['Club Info', '/club-info'],
+const Header: React.FC = () => {
+  const navLinks: NavLinksType = [
+    ['News', '/news/'],
+    // ['Events', '/events/'],
+    // ['Fixtures', '/fixtures/'],
+    // ['Teams', '/teams/'],
+    ['Photos', '/photos/'],
+    ['Club Info', '/about-us/'],
   ];
 
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
@@ -40,7 +41,7 @@ const Header: React.FC<Props> = ({ currentPath }) => {
           <Brand />
 
           <div tw="hidden lg:flex lg:w-auto lg:space-x-12 justify-end items-center">
-            <NavLinks currentPath={currentPath} links={navLinks} />
+            <NavLinks links={navLinks} />
 
             <NavButtonWrap>
               {/* <NavButton label="Pay Subs" to="/register" /> */}
@@ -54,7 +55,6 @@ const Header: React.FC<Props> = ({ currentPath }) => {
         <MobileMenu
           isOpen={menuIsOpen}
           setIsOpen={setMenuIsOpen}
-          currentPath={currentPath}
           links={navLinks}
         />
       </div>

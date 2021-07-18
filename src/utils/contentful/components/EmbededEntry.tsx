@@ -1,4 +1,7 @@
 import React from 'react';
+import Avatar from '../../../components/Avatar';
+import CityMapperLink from '../../../components/CityMapperLink';
+import FormSection from '../../../components/Form/FormSection';
 
 import YouTube from '../../../components/YouTube';
 
@@ -14,10 +17,24 @@ const EmbededEntry: React.FC<Props> = ({ id }) => {
   const entry = references.find((e: any) => e.contentful_id === id);
 
   switch (entry.sys.contentType.sys.id as CUSTOM_BLOCK) {
+    case 'citymapper':
+      return <CityMapperLink link={entry.link} />;
+    case 'form':
+      return (
+        <FormSection
+          id={id}
+          introduction={entry.introduction}
+          success={entry.success}
+          items={JSON.parse(entry.items.internal.content)}
+          active={entry.active}
+        />
+      );
+    case 'member':
+      return <Avatar member={entry} />;
     case 'youtube':
       return <YouTube url={entry.url} />;
     default:
-      return null;
+      return <p>{entry.sys.contentType.sys.id}</p>;
   }
 };
 

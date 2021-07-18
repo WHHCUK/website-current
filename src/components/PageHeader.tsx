@@ -13,9 +13,9 @@ interface Props {
 
 const PageHeader: React.FC<Props> = ({ heading, top, bottom }) => (
   <Container>
-    {top && <div tw="space-x-4">{top}</div>}
+    {top && <div tw="flex space-x-4  justify-center">{top}</div>}
     <H2 tw="mt-2 mb-6">{heading}</H2>
-    {bottom && <div tw="space-x-4">{bottom}</div>}
+    {bottom && <div tw="flex space-x-4  justify-center">{bottom}</div>}
   </Container>
 );
 

@@ -1,16 +1,16 @@
 import { graphql, Link } from 'gatsby';
-import * as React from 'react';
-import tw from 'twin.macro';
 import BackgroundImage from 'gatsby-background-image';
+import * as React from 'react';
+import styled from 'styled-components';
+import tw from 'twin.macro';
 
 import AffiliateSection from '../components/AffiliateSection';
 import ArticleGrid from '../components/ArticleGrid';
 import Container from '../components/Container';
 import NewsletterSection from '../components/NewsletterSection';
-import Page from '../components/Page';
 import { Homepage, NewsArticle } from '../utils/contentful';
 import { H2, H3 } from '../components/Headings';
-import styled from 'styled-components';
+import Page from '../components/Page';
 
 const HeroText = styled.div`
   &:before {
@@ -22,7 +22,7 @@ const HeroText = styled.div`
   }
 `;
 
-const Wrap = tw.section`py-20`;
+const NewsWrap = tw.section`pt-10 pb-20`;
 
 interface Props {
   data: {
@@ -46,7 +46,7 @@ const IndexPage: React.FC<Props> = ({
   },
 }) => {
   return (
-    <Page currentPath="/">
+    <Page>
       <title>Home | WHHC</title>
       <BackgroundImage fluid={heroImage.fluid} tw="h-160 w-full">
         <div tw="container mx-auto h-full flex flex-col justify-end py-32">
@@ -56,14 +56,14 @@ const IndexPage: React.FC<Props> = ({
           </HeroText>
         </div>
       </BackgroundImage>
-      <Wrap tw="bg-gray-50">
+      <NewsWrap tw="bg-gray-50">
         <Container>
           <H3 tw="mx-4 mb-2 pb-2">
             <Link to="/news">News</Link>
           </H3>
           <ArticleGrid articles={articles} />
         </Container>
-      </Wrap>
+      </NewsWrap>
       <NewsletterSection />
       <AffiliateSection />
     </Page>

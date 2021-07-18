@@ -1,8 +1,12 @@
 import React from 'react';
 import tw from 'twin.macro';
+import { NavLinksType } from '../../Header';
+import {
+  NavButton,
+  NavButtonWrapMobile,
+} from '../../Header/components/NavButtons';
 
-import { NavLinksMobile } from './NavLinks';
-import { NavButton, NavButtonWrapMobile } from './NavButtons';
+import { NavLinksMobile } from '../../Header/components/NavLinks';
 
 const Button = tw.button`
   lg:hidden inline-flex items-center justify-center p-2 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white
@@ -11,8 +15,7 @@ const Button = tw.button`
 interface Props {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  currentPath?: string;
-  links: [string, string][];
+  links: NavLinksType;
 }
 
 export const MobileMenuOpenButton: React.FC<Pick<Props, 'setIsOpen'>> = ({
@@ -72,12 +75,7 @@ export const MobileMenuCloseButton: React.FC<Pick<Props, 'setIsOpen'>> = ({
   </button>
 );
 
-export const MobileMenu: React.FC<Props> = ({
-  isOpen,
-  setIsOpen,
-  currentPath,
-  links,
-}) => {
+export const MobileMenu: React.FC<Props> = ({ isOpen, setIsOpen, links }) => {
   if (!isOpen) {
     return null;
   }
@@ -94,7 +92,7 @@ export const MobileMenu: React.FC<Props> = ({
           <MobileMenuCloseButton setIsOpen={setIsOpen} />
         </div>
         <div tw="flex flex-col h-full justify-between">
-          <NavLinksMobile currentPath={currentPath} links={links} />
+          <NavLinksMobile links={links} />
 
           <NavButtonWrapMobile>
             {/* <NavButton label="Pay Subs" to="/register" /> */}

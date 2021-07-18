@@ -8,7 +8,9 @@ import NewspaperIcon from '../assets/images/icons/newspaper.svg';
 import useMailChimp, { MailChimpError } from '../hooks/useMailchimp';
 
 import Container from './Container';
-import { H2 } from './Headings';
+import CtaButton from './Form/CtaButton';
+import { H3 } from './Headings';
+import Spinner from './Spinner';
 
 const Wrap = tw.section`bg-club-maroon-500 py-16`;
 
@@ -90,7 +92,7 @@ const NewsletterSection: React.FC = () => {
             </div>
           </div>
           <div tw="mb-6 w-full lg:w-auto max-w-lg mx-auto lg:ml-0 mr-auto text-center lg:text-left">
-            <H2 tw="text-white mb-0">{heading}</H2>
+            <H3 tw="text-white mb-0">{heading}</H3>
             <p tw="text-gray-200">{text}</p>
           </div>
           <div tw="mx-auto w-full md:w-4/5 lg:w-2/5 min-h-32 flex justify-center items-center">
@@ -106,7 +108,7 @@ const NewsletterSection: React.FC = () => {
               </div>
             ) : (
               <form tw="justify-center w-full pt-4" onSubmit={handleFormSubmit}>
-                <div tw="flex w-full space-x-4 justify-center">
+                <div tw="flex flex-col lg:flex-row w-full lg:space-x-4 space-y-4 lg:space-y-0 justify-center">
                   <div tw="flex-grow relative">
                     <input
                       tw="w-full py-3 px-4 text-xs rounded leading-loose"
@@ -116,26 +118,9 @@ const NewsletterSection: React.FC = () => {
                     />
                     <div tw="absolute right-0 top-1/2 justify-center">
                       {loading && (
-                        <svg
-                          tw="animate-spin h-6 w-6 -mt-3 mr-3 text-club-blue-500"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            tw="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            stroke-width="4"
-                          ></circle>
-                          <path
-                            tw="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
-                        </svg>
+                        <div tw="-mt-3 mr-3">
+                          <Spinner />
+                        </div>
                       )}
                       {error && (
                         <img
@@ -145,12 +130,7 @@ const NewsletterSection: React.FC = () => {
                       )}
                     </div>
                   </div>
-                  <button
-                    tw="flex-none py-2 px-6 rounded-xl bg-club-blue-600 hover:bg-club-blue-500 text-gray-50 font-bold leading-loose transition duration-200"
-                    type="submit"
-                  >
-                    {submitText}
-                  </button>
+                  <CtaButton type="submit">{submitText}</CtaButton>
                 </div>
                 <div tw="flex h-4 items-end mt-2">
                   {error && <p tw="text-white text-sm">{getError(error)}</p>}

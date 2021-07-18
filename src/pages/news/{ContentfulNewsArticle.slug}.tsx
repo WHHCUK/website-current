@@ -53,7 +53,7 @@ const NewsArticlePage: React.FC<Props> = ({ data }) => {
     data.contentfulNewsArticle;
 
   return (
-    <Page currentPath="/news">
+    <Page>
       <title>{title} | WHHC</title>
       <Wrap>
         <Container>
@@ -75,11 +75,12 @@ const NewsArticlePage: React.FC<Props> = ({ data }) => {
           </ReferencesContext.Provider>
 
           {gallery && <Gallery images={gallery} />}
-
-          <aside tw="mt-12">
-            <h2 tw="sr-only">Similar News</h2>
-            <ArticleGrid articles={similar} />
-          </aside>
+        </Container>
+      </Wrap>
+      <Wrap as="aside" tw="bg-gray-100">
+        <Container>
+          <h2 tw="sr-only">Similar News</h2>
+          <ArticleGrid articles={similar} aside={true} />
         </Container>
       </Wrap>
       <NewsletterSection />
@@ -104,6 +105,24 @@ export const query = graphql`
       body {
         raw
         references {
+          ... on ContentfulMember {
+            contentful_id
+            sys {
+              contentType {
+                sys {
+                  id
+                }
+              }
+            }
+            avatar {
+              fluid(toFormat: WEBP, quality: 90) {
+                ...GatsbyContentfulFluid
+              }
+            }
+            email
+            role
+            name
+          }
           ... on ContentfulRichtextYoutube {
             contentful_id
             url
@@ -114,6 +133,17 @@ export const query = graphql`
                 }
               }
             }
+          }
+          ... on ContentfulCityMapperLink {
+            contentful_id
+            sys {
+              contentType {
+                sys {
+                  id
+                }
+              }
+            }
+            link
           }
           ... on ContentfulAsset {
             contentful_id

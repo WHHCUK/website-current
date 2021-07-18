@@ -38,8 +38,9 @@ const NewsLandingPage: React.FC<Props> = (props) => {
   const articles = props.data.allContentfulNewsArticle.nodes;
 
   return (
-    <Page currentPath="/news">
+    <Page>
       <title>News | WHHC</title>
+      <link rel="canonical" href="/news/" />
       <Wrap tw="bg-gray-50">
         <Container>
           <div tw="mb-6 flex flex-wrap justify-center">

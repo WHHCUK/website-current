@@ -37,7 +37,7 @@ const PhotosPage: React.FC<Props> = ({ data }) => {
   const title = 'Photos';
 
   return (
-    <Page currentPath="/news">
+    <Page>
       <title>{title} | WHHC</title>
       <Wrap>
         <Container>

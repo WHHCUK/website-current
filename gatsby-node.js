@@ -73,8 +73,8 @@ async function similarNewsArticleResolver(source, _args, context) {
     type: 'ContentfulNewsArticle',
   });
 
-  return [...similar.slice(0, 2), ...mostRecent.slice(0, 3)]
-    .slice(0, 3)
+  return [...similar.slice(0, 2), ...mostRecent.slice(0, 4)]
+    .slice(0, 4)
     .sort(sortByDateDesc);
 }
 

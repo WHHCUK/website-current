@@ -16,7 +16,7 @@ const useMailChimp = () => {
   const [error, setError] =
     React.useState<MailChimpError | undefined>(undefined);
 
-  const { post, response, error: fetchError } = useFetch(process.env.API_URL);
+  const { post, response, error: fetchErr } = useFetch(process.env.API_URL);
 
   const handleSuccess = () => {
     setSuccess(true);
@@ -36,18 +36,6 @@ const useMailChimp = () => {
     setError(message);
   };
 
-  React.useEffect(() => {
-    if (response.ok) {
-      handleSuccess();
-    }
-
-    if (fetchError) {
-      response.json().then(({ message }) => {
-        handleError(message);
-      });
-    }
-  }, [response, fetchError]);
-
   const subscribe = () => {
     handleLoading();
 
@@ -56,8 +44,20 @@ const useMailChimp = () => {
       return;
     }
 
-    post('/newsletter', { email });
+    post('/newsletter', { email }).then(() => {
+      handleSuccess();
+    });
   };
+
+  React.useEffect(() => {
+    if (fetchErr) {
+      console.log(response.status);
+
+      response.json().then((body) => {
+        handleError(body.message);
+      });
+    }
+  }, [response, fetchErr]);
 
   return {
     error,

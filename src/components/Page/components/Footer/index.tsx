@@ -6,9 +6,9 @@ import tw from 'twin.macro';
 import FacebookIcon from '../../../../assets/images/social/facebook.svg';
 import InstagramIcon from '../../../../assets/images/social/instagram.svg';
 import TwitterIcon from '../../../../assets/images/social/twitter.svg';
+import Brand from '../../../Brand';
 import Container from '../../../Container';
 import Text from '../../../Text';
-import Brand from '../components/Brand';
 
 import SocialMediaIcon from './components/SocialMediaIcon';
 
@@ -18,6 +18,7 @@ const Slogan = tw(Text)`text-gray-200 text-lg lg:text-xl leading-snug`;
 interface FooterColumnLink {
   contentful_id: string;
   slug: string;
+  shortName: string;
   title: string;
 }
 
@@ -50,12 +51,14 @@ const Footer: React.FC = () => {
           footerColumn1Links {
             contentful_id
             slug
+            shortName
             title
           }
           footerColumn2Header
           footerColumn2Links {
             contentful_id
             slug
+            shortName
             title
           }
         }
@@ -97,13 +100,14 @@ const Footer: React.FC = () => {
                 <ul tw="md:w-1/2">
                   {data.footerColumn2Links
                     .slice(0, Math.ceil(data.footerColumn2Links.length / 2))
-                    .map((link) => (
-                      <li key={link.contentful_id} tw="mb-4">
+                    .map((link, index) => (
+                      <li key={`${link.contentful_id}${index}`} tw="mb-4">
                         <Link
                           tw="text-gray-300 hover:text-gray-300"
                           to={`/${link.slug}`}
+                          title={link.title}
                         >
-                          {link.title.substr(0, 25)}
+                          {link.shortName}
                         </Link>
                       </li>
                     ))}
@@ -111,13 +115,14 @@ const Footer: React.FC = () => {
                 <ul tw="w-1/2">
                   {data.footerColumn2Links
                     .slice(Math.ceil(data.footerColumn2Links.length / 2))
-                    .map((link) => (
-                      <li key={link.contentful_id} tw="mb-4">
+                    .map((link, index) => (
+                      <li key={`${link.contentful_id}${index}`} tw="mb-4">
                         <Link
                           tw="text-gray-300 hover:text-gray-300"
                           to={`/${link.slug}`}
+                          title={link.title}
                         >
-                          {link.title.substr(0, 25)}
+                          {link.shortName}
                         </Link>
                       </li>
                     ))}
@@ -129,13 +134,14 @@ const Footer: React.FC = () => {
                 {data.footerColumn1Header}
               </h2>
               <ul>
-                {data.footerColumn1Links.map((link) => (
-                  <li key={link.contentful_id} tw="mb-4">
+                {data.footerColumn1Links.map((link, index) => (
+                  <li key={`${link.contentful_id}${index}`} tw="mb-4">
                     <Link
                       tw="text-gray-300 hover:text-gray-300"
                       to={`/${link.slug}`}
+                      title={link.title}
                     >
-                      {link.title.substr(0, 25)}
+                      {link.shortName}
                     </Link>
                   </li>
                 ))}

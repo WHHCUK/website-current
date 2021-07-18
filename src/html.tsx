@@ -16,12 +16,13 @@ export default function HTML(props: Props) {
   return (
     <html {...props.htmlAttributes} lang="en">
       <head>
-        <meta charSet="utf-8" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <meta name="robots" content="noindex" />
         {props.headComponents}
         <style>{'nav a { color: #ffffff }'}</style>
       </head>
