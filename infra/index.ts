@@ -37,9 +37,11 @@ crawlDirectory(webContentsRootPath, (filePath: string) => {
   );
 });
 
+const aliases = [config.url, `www.${config.url}`];
+
 const distributionArgs: aws.cloudfront.DistributionArgs = {
   enabled: true,
-  aliases: [config.url],
+  aliases,
   origins: [
     {
       originId: contentBucket.arn,
@@ -91,7 +93,8 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
 
 const cdn = new aws.cloudfront.Distribution('cdn', distributionArgs);
 
-createAliasRecord(config.url, cdn);
+createAliasRecord(aliases[0], cdn);
+createAliasRecord(aliases[1], cdn);
 
 const output = {
   contentBucketUri: pulumi.interpolate`s3://${contentBucket.bucket}`,
