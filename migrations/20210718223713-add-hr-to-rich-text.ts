@@ -21,11 +21,28 @@ export = async function (migration) {
           'hr',
           'entry-hyperlink',
           'embedded-asset-block',
+          'embedded-entry-inline',
+          'embedded-entry-block',
+          'asset-hyperlink',
         ],
       },
       {
         nodes: {
-          'entry-hyperlink': [{ linkContentType: ['news-article', 'page'] }],
+          'embedded-entry-inline': [
+            {
+              linkContentType: ['citymapper'],
+            },
+          ],
+          'embedded-entry-block': [
+            {
+              linkContentType: ['member', 'form', 'youtube'],
+            },
+          ],
+          'entry-hyperlink': [
+            {
+              linkContentType: ['homepage', 'news-article', 'page'],
+            },
+          ],
         },
       },
     ],
@@ -48,13 +65,28 @@ export = async function (migration) {
           'hr',
           'entry-hyperlink',
           'embedded-asset-block',
+          'embedded-entry-inline',
           'embedded-entry-block',
+          'asset-hyperlink',
         ],
       },
       {
         nodes: {
-          'entry-hyperlink': [{ linkContentType: ['news-article', 'pages'] }],
-          'embedded-entry-block': [{ linkContentType: ['youtube'] }],
+          'embedded-entry-inline': [
+            {
+              linkContentType: ['citymapper'],
+            },
+          ],
+          'embedded-entry-block': [
+            {
+              linkContentType: ['member', 'form', 'youtube'],
+            },
+          ],
+          'entry-hyperlink': [
+            {
+              linkContentType: ['homepage', 'news-article', 'page'],
+            },
+          ],
         },
       },
     ],
