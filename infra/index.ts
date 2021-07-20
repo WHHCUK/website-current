@@ -37,7 +37,11 @@ crawlDirectory(webContentsRootPath, (filePath: string) => {
   );
 });
 
-const aliases = [config.url, `www.${config.url}`];
+const aliases = [config.url];
+
+if (config.stack === 'prod') {
+  aliases.push(`www.${config.url}`);
+}
 
 const distributionArgs: aws.cloudfront.DistributionArgs = {
   enabled: true,
@@ -93,8 +97,9 @@ const distributionArgs: aws.cloudfront.DistributionArgs = {
 
 const cdn = new aws.cloudfront.Distribution('cdn', distributionArgs);
 
-createAliasRecord(aliases[0], cdn);
-createAliasRecord(aliases[1], cdn);
+aliases.forEach((alias) => {
+  createAliasRecord(alias, cdn);
+});
 
 const output = {
   contentBucketUri: pulumi.interpolate`s3://${contentBucket.bucket}`,
