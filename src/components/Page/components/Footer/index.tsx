@@ -97,35 +97,18 @@ const Footer: React.FC = () => {
                 {data.footerColumn2Header}
               </h2>
               <div tw="md:flex justify-between">
-                <ul tw="md:w-1/2">
-                  {data.footerColumn2Links
-                    .slice(0, Math.ceil(data.footerColumn2Links.length / 2))
-                    .map((link, index) => (
-                      <li key={`${link.contentful_id}${index}`} tw="mb-4">
-                        <Link
-                          tw="text-gray-300 hover:text-gray-300"
-                          to={`/${link.slug}`}
-                          title={link.title}
-                        >
-                          {link.shortName}
-                        </Link>
-                      </li>
-                    ))}
-                </ul>
-                <ul tw="w-1/2">
-                  {data.footerColumn2Links
-                    .slice(Math.ceil(data.footerColumn2Links.length / 2))
-                    .map((link, index) => (
-                      <li key={`${link.contentful_id}${index}`} tw="mb-4">
-                        <Link
-                          tw="text-gray-300 hover:text-gray-300"
-                          to={`/${link.slug}`}
-                          title={link.title}
-                        >
-                          {link.shortName}
-                        </Link>
-                      </li>
-                    ))}
+                <ul tw="flex flex-wrap">
+                  {data.footerColumn2Links.map((link, index) => (
+                    <li key={`${link.contentful_id}${index}`} tw="mb-4 w-1/2">
+                      <Link
+                        tw="text-gray-300 hover:text-gray-300"
+                        to={`/${link.slug}`}
+                        title={link.title}
+                      >
+                        {link.shortName}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

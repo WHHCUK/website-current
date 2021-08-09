@@ -46,14 +46,14 @@ const NewsArticlePage: React.FC<Props> = ({ data, path }) => {
       <Wrap>
         <Container>
           {showMenu && <MobilePageMenu currentSlug={path} items={menuItems} />}
-          <div tw="flex space-x-8">
+          <div tw="flex space-x-8 justify-center">
             {showMenu && <LeftColumn />}
             <RightColumn>
               <H2 tw="mt-0">{title}</H2>
             </RightColumn>
           </div>
 
-          <div tw="flex space-x-8 pr-8 lg:pr-0">
+          <div tw="flex space-x-8 pr-8 lg:pr-0 justify-center">
             {showMenu && (
               <LeftColumn tw="pt-2 hidden lg:block ">
                 <div tw="sticky top-0 -mt-16 pt-16">

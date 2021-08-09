@@ -56,7 +56,7 @@ const IndexPage: React.FC<Props> = ({
           </HeroText>
         </div>
       </BackgroundImage>
-      <NewsWrap tw="bg-gray-50">
+      <NewsWrap tw="bg-gray-50 py-16">
         <Container>
           <H3 tw="mx-4 mb-2 pb-2">
             <Link to="/news">News</Link>
