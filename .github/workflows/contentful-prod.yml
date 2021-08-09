@@ -1,7 +1,7 @@
-name: Contentful Edit Event
+name:  Contentful Deploy Prod
 on:
     repository_dispatch:
-        types: [contentful-edit, contentful-publish]
+        types: [contentful-publish]
 
 jobs:
   checkout:
@@ -25,56 +25,12 @@ jobs:
       - name: yarn Install
         run: yarn install --frozen-lockfile
 
-  lint:
+  deploy-prod:
     needs: [checkout]
     runs-on: ubuntu-18.04
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-      
-      - name: Set up Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-
-      - name: Node modules cache
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Lint
-        run: yarn lint
-
-  typecheck:
-    needs: [checkout]
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-      
-      - name: Set up Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-
-      - name: Node modules cache
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Lint
-        run: yarn typecheck
-
-  deploy-preview:
-    needs: [lint, typecheck]
-    runs-on: ubuntu-18.04
-    environment: preview
     concurrency: 
-      group: deploy-gatsby-preview
+      group: deploy-gatsby-prod
+      cancel-in-progress: false
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -93,13 +49,6 @@ jobs:
 
       - name: yarn Install
         run: yarn install --frozen-lockfile
-
-      # - name: Gatsby cache
-      #   uses: actions/cache@v2
-      #   id: gatsby-cache-preview
-      #   with:
-      #     path: '.cache'
-      #     key: ${{ runner.os }}-gatsby-preview
       
       - name: Build Gatsby
         run: yarn build
@@ -125,6 +74,6 @@ jobs:
         uses: pulumi/actions@v3
         with:
           command: up
-          stack-name: preview
+          stack-name: prod
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
