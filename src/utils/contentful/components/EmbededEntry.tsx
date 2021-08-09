@@ -2,6 +2,7 @@ import React from 'react';
 import Avatar from '../../../components/Avatar';
 import CityMapperLink from '../../../components/CityMapperLink';
 import FormSection from '../../../components/Form/FormSection';
+import Table from '../../../components/Table';
 
 import YouTube from '../../../components/YouTube';
 
@@ -31,6 +32,8 @@ const EmbededEntry: React.FC<Props> = ({ id }) => {
       );
     case 'member':
       return <Avatar member={entry} />;
+    case 'table':
+      return <Table data={entry.table} />;
     case 'youtube':
       return <YouTube url={entry.url} />;
     default:

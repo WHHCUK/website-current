@@ -91,7 +91,12 @@ export interface Page {
   title: string;
 }
 
-export type CUSTOM_BLOCK = 'citymapper' | 'form' | 'member' | 'youtube';
+export type CUSTOM_BLOCK =
+  | 'citymapper'
+  | 'form'
+  | 'member'
+  | 'table'
+  | 'youtube';
 
 export interface FluidImageProps {
   fluid: FluidObject;

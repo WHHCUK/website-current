@@ -87,6 +87,21 @@ export const query = graphql`
       body {
         raw
         references {
+          ... on ContentfulRichTextTable {
+            contentful_id
+            sys {
+              contentType {
+                sys {
+                  id
+                }
+              }
+            }
+            table {
+              headings
+              rows
+              alignment
+            }
+          }
           ... on ContentfulAsset {
             contentful_id
             description
