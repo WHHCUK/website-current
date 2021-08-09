@@ -17,6 +17,9 @@ import {
 // const Container = tw.div`mb-10 max-w-3xl mx-auto`;
 const Wrap = tw.section`py-20`;
 
+const LeftColumn = tw.div`lg:w-1/5`;
+const RightColumn = tw.main`lg:w-4/5`;
+
 interface Props {
   path: string;
   data: {
@@ -35,13 +38,7 @@ const NewsArticlePage: React.FC<Props> = ({ data, path }) => {
   const { title, body } = data.contentfulPage;
   const menuItems = data.contentfulSiteSettings.pageMenu;
 
-  const showMenu = (() => {
-    const currentSlugIsInMenu = menuItems.find(
-      ({ slug }) => path === `/${slug}/`,
-    );
-
-    return !!currentSlugIsInMenu;
-  })();
+  const showMenu = !!menuItems.find(({ slug }) => path === `/${slug}/`);
 
   return (
     <Page>
@@ -49,26 +46,26 @@ const NewsArticlePage: React.FC<Props> = ({ data, path }) => {
       <Wrap>
         <Container>
           {showMenu && <MobilePageMenu currentSlug={path} items={menuItems} />}
-          <div tw="lg:flex lg:space-x-8 justify-center">
-            {showMenu && <div tw="lg:w-1/5" />}
-            <div tw="lg:w-4/5">
+          <div tw="flex space-x-8">
+            {showMenu && <LeftColumn />}
+            <RightColumn>
               <H2 tw="mt-0">{title}</H2>
-            </div>
+            </RightColumn>
           </div>
 
-          <div tw="lg:flex lg:space-x-8 justify-center">
+          <div tw="flex space-x-8 pr-8 lg:pr-0">
             {showMenu && (
-              <div tw="hidden lg:block w-1/5 pt-2">
+              <LeftColumn tw="pt-2 hidden lg:block ">
                 <div tw="sticky top-0 -mt-16 pt-16">
                   <PageMenu currentSlug={path} items={menuItems} />
                 </div>
-              </div>
+              </LeftColumn>
             )}
-            <div tw="lg:w-4/5">
+            <RightColumn>
               <ReferencesContext.Provider value={body.references}>
                 {richText(body)}
               </ReferencesContext.Provider>
-            </div>
+            </RightColumn>
           </div>
         </Container>
       </Wrap>
