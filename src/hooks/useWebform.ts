@@ -12,7 +12,11 @@ const useWebform = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<WebformError | undefined>(undefined);
 
-  const { post, response, error: fetchErr } = useFetch(process.env.API_URL);
+  const {
+    post,
+    response,
+    error: fetchErr,
+  } = useFetch(process.env.GATSBY_API_URL);
 
   React.useEffect(() => {
     if (fetchErr) {

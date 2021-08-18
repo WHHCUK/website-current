@@ -16,7 +16,11 @@ const useMailChimp = () => {
   const [error, setError] =
     React.useState<MailChimpError | undefined>(undefined);
 
-  const { post, response, error: fetchErr } = useFetch(process.env.API_URL);
+  const {
+    post,
+    response,
+    error: fetchErr,
+  } = useFetch(process.env.GATSBY_API_URL);
 
   const handleSuccess = () => {
     setSuccess(true);

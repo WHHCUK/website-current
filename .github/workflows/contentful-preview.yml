@@ -57,6 +57,7 @@ jobs:
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
           CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
           CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
+          GATSBY_API_URL: ${{ secrets.GATSBY_API_URL }}
 
       - name: Overwrite Robots Text
         run: "echo User-agent: * Disallow: / > ./public/robots.txt"
