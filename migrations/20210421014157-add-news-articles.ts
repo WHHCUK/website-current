@@ -6,7 +6,7 @@ const TAGS = [
   'coaching',
   'competitions',
   'england-hockey',
-  'ladies',
+  'womens',
   'members',
   'mens',
   'mixed',

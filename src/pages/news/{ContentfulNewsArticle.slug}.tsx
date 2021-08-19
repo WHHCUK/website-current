@@ -70,7 +70,7 @@ const NewsArticlePage: React.FC<Props> = ({ data }) => {
 
           {feature && <FeatureImage image={feature} />}
 
-          <ReferencesContext.Provider value={body.references}>
+          <ReferencesContext.Provider value={body.references ?? []}>
             <Body>{richText(body)}</Body>
           </ReferencesContext.Provider>
 

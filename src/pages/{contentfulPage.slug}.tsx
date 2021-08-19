@@ -62,7 +62,7 @@ const NewsArticlePage: React.FC<Props> = ({ data, path }) => {
               </LeftColumn>
             )}
             <RightColumn>
-              <ReferencesContext.Provider value={body.references}>
+              <ReferencesContext.Provider value={body.references ?? []}>
                 {richText(body)}
               </ReferencesContext.Provider>
             </RightColumn>
