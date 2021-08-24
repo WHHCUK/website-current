@@ -3,6 +3,10 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const siteMetadata = {
+  siteUrl: 'https://whhc.uk',
+};
+
 const plugins = [
   {
     resolve: 'gatsby-source-contentful',
@@ -14,6 +18,13 @@ const plugins = [
   },
   'gatsby-transformer-sharp',
   'gatsby-plugin-sharp',
+  'gatsby-plugin-sitemap',
+  {
+    resolve: 'gatsby-plugin-google-tagmanager',
+    options: {
+      id: 'GTM-N6VWH94',
+    },
+  },
 ];
 
 if (process.env.ANALYSE_WEBPACK_BUNDLES === 'true') {
@@ -22,4 +33,5 @@ if (process.env.ANALYSE_WEBPACK_BUNDLES === 'true') {
 
 module.exports = {
   plugins,
+  siteMetadata,
 };
