@@ -22,7 +22,10 @@ export default function HTML(props: Props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <meta name="robots" content="noindex" />
+        <meta
+          name="description"
+          content="West Hampstead Hockey Club, The first choice for social and competitive hockey in London"
+        />
         {props.headComponents}
         <style>{'nav a { color: #ffffff }'}</style>
       </head>

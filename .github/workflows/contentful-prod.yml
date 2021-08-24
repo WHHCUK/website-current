@@ -59,8 +59,8 @@ jobs:
           GATSBY_API_URL: ${{ secrets.GATSBY_API_URL }}
 
       - name: Overwrite Robots Text
-        run: "echo User-agent: * Disallow: / > ./public/robots.txt"
-        
+        run: 'echo "User-agent: *" > ./public/robots.txt && echo "Allow: /" >> ./public/robots.txt'
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
