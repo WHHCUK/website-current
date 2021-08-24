@@ -151,6 +151,18 @@ export const query = graphql`
             }
             link
           }
+          ... on ContentfulRichTextGoogleDriveFolder {
+            contentful_id
+            sys {
+              contentType {
+                sys {
+                  id
+                }
+              }
+            }
+            folderId
+            layout
+          }
           ... on ContentfulRichTextForm {
             contentful_id
             sys {

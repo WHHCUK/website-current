@@ -94,6 +94,7 @@ export interface Page {
 export type CUSTOM_BLOCK =
   | 'citymapper'
   | 'form'
+  | 'googleDriveFolder'
   | 'member'
   | 'table'
   | 'youtube';

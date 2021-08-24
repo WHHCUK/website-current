@@ -2,6 +2,7 @@ import React from 'react';
 import Avatar from '../../../components/Avatar';
 import CityMapperLink from '../../../components/CityMapperLink';
 import FormSection from '../../../components/Form/FormSection';
+import GoogleDriveFolder from '../../../components/GoogleDriveFolder';
 import Table from '../../../components/Table';
 
 import YouTube from '../../../components/YouTube';
@@ -30,6 +31,8 @@ const EmbededEntry: React.FC<Props> = ({ id }) => {
           active={entry.active}
         />
       );
+    case 'googleDriveFolder':
+      return <GoogleDriveFolder id={entry.folderId} layout={entry.layout} />;
     case 'member':
       return <Avatar member={entry} />;
     case 'table':
