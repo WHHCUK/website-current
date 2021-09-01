@@ -95,7 +95,7 @@ export const MobileMenu: React.FC<Props> = ({ isOpen, setIsOpen, links }) => {
           <NavLinksMobile links={links} />
 
           <NavButtonWrapMobile>
-            {/* <NavButton label="Pay Subs" to="/register" /> */}
+            <NavButton label="Pay Subs" to="/membership-fees" />
             <NavButton label="Join" to="/join" color="black" />
           </NavButtonWrapMobile>
         </div>
