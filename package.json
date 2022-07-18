@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@pulumi/aws": "^4.2.0",
-    "@pulumi/pulumi": "^3.2.1",
+    "@pulumi/pulumi": "^3.36.0",
     "@types/mime": "^2.0.3",
     "@types/react": "^17.0.4",
     "@types/styled-components": "^5.1.9",
